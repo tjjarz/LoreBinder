@@ -1,4 +1,8 @@
-﻿
+﻿@using System.Xml.Linq;
+@using WorldBuilder.MVC.Models;
+@model Gaggle
+
+
 @{
     ViewBag.Title = "Create";
 }
@@ -41,18 +45,23 @@
                 <div class="form-inline">
                     <div class="form-group">
                         <label class="sr-only" for="field-name" color="#ffffff">Field Name</label>
-                        <input type="text" class="form-control" id="field-name" placeholder="Field Name"> 
+                        <input type="text" class="form-control" id="field-name" placeholder="Catagory">
                         <label class="sr-only" for="field-value">Field Value</label>
-                        <textarea type="text" class="form-control" id="field-value" placeholder="Field Value"></textarea>
+                        <textarea type="text" class="form-control" id="field-value" placeholder="Character, Item etc"></textarea>
                     </div>
-                    <button class="btn btn-danger" data-role="remove">
-                        <span class="glyphicon glyphicon-remove"></span>
-                    </button>
-                    <button class="btn btn-primary" data-role="add">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </div>  <!-- /div.form-inline -->
-            </div>  <!-- /div[data-role="dynamic-fields"] -->
+                    <div class="col-md-10">
+                        @{Element element;
+                            Html.EditorFor(element => element, new { htmlAttributes: new { @class = "control-label col-md-2" } })
+                        }
+                    </div>
+                        <button class="btn btn-danger" data-role="remove">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        <button class="btn btn-primary" data-role="add">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>  <!-- /div.form-inline -->
+                </div>  <!-- /div[data-role="dynamic-fields"] -->
         </div>  <!-- /div.col-md-12 -->
     </div>  <!-- /div.row -->
 </div>
