@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Campaign>
+  <Characters>
+    <character>
+      <name>Tomika Corynn</name>
+      <Motives>
+        <motive>protect Amberfall</motive>
+        <motive>protect Sybil</motive>
+        <motive>protect The Goblin's Gory End Inn</motive>
+      </Motives>
+      <textblock>
+        <head>Personal History</head>
+        <body>just a fool who loves her town more than herself.</body>
+        <head>Party History</head>
+        <body>Know's [Brenwinn] from way back when.</body>
+      </textblock>
+      <associations>
+        <association>
+          <nature>Wife</nature>
+          <subject>Sybil Corynn</subject>
+        </association>
+        <association>
+          <nature>Mayor</nature>
+          <subject>Amberfall</subject>
+        </association>
+        <association>
+          <nature>Member</nature>
+          <subject>Town Council</subject>
+        </association>
+        <association>
+          <nature>Owner</nature>
+          <subject>Goblin's Gory End Inn</subject>
+        </association>
+        <association>
+          <nature>resident</nature>
+          <subject>Amberfall</subject>
+        </association>
+      </associations>
+    </character>
+    <character>
+      <name>Sybil Corynn</name>
+      <Motives>
+        <motive>protect Tomika</motive>
+        <motive>protect The Goblin's Gory End Inn</motive>
+      </Motives>
+      <textblock>
+        <head>Personal History</head>
+        <body>The council primarily concerns itself with disputes between represented member groups</body>
+        <head>Party History</head>
+        <body>Know's [Brenwinn] from way back when.</body>
+        <body>Know's [Jack] can hold his liquor.</body>
+      </textblock>
+      <associations>
+        <association>
+          <nature>Wife</nature>
+          <subject>Tomika Corynn</subject>
+        </association>
+        <association>
+          <nature>resident</nature>
+          <subject>Amberfall</subject>
+        </association>
+        <association>
+          <nature>Owner</nature>
+          <subject>Goblin's Gory End Inn</subject>
+        </association>
+      </associations>
+    </character>
+  </Characters>
+  <Groups>
+    <Group>
+      <name>Town Council</name>
+      <shortdescription>A gaggle of assholes</shortdescription>
+      <textblock>
+        <head>Council History</head>
+        <body>The council actually predates Amberfall as it is currently known</body>
+        <head>Council Responsibilities</head>
+        <body>The council primarily concerns itself with disputes between represented member groups</body>
+      </textblock>
+    </Group>
+    <Group>
+      <name>Trade Guild</name>
+      <shortdescription>A gaggle of fuckers</shortdescription>
+      <textblock>
+        <head>literally the worst kinds of people</head>
+        <body>I've said all I need to say here</body>
+      </textblock>
+    </Group>
+  </Groups>
+  <Locations>
+    <location>
+      <name>Town Hall</name>
+      <shortdescription>Where the council meets</shortdescription>
+      <textblock>
+        <head>Security</head>
+        <body>There are a number of security features in place at the town hall where the council meets.</body>
+      </textblock>
+    </location>
+    <location>
+      <name>Trade Hall</name>
+      <shortdescription>Where the trade guild meets</shortdescription>
+      <textblock>
+        <head>History</head>
+        <body>unknown.</body>
+      </textblock>
+    </location>
+  </Locations>
+</Campaign>
+
+

@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<script type="text/javascript">
+    $(function () {
+        // Remove button click
+        $(document).on(
+            'click',
+            '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
+            function (e) {
+                e.preventDefault();
+                $(this).closest('.form-inline').remove();
+            }
+        );
+        // Add button click
+        $(document).on(
+            'click',
+            '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+            function (e) {
+                e.preventDefault();
+                var container = $(this).closest('[data-role="dynamic-fields"]');
+                new_field_group = container.children().filter('.form-inline:first-child').clone();
+                new_field_group.find('input').each(function () {
+                    $(this).val('');
+                });
+                container.append(new_field_group);
+            }
+        );
+    });
+</script>
+
+
+<h2>Create</h2>
+<!--Grabbed from https://bootsnipp.com/snippets/VPRlZ-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div data-role="dynamic-fields">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="field-name">Field Name</label>
+                        <input type="text" class="form-control" id="field-name" placeholder="Field Name">
+                    </div>
+                    <span>-</span>
+                    <div class="form-group">
+                        <label class="sr-only" for="field-value">Field Value</label>
+                        <input type="text" class="form-control" id="field-value" placeholder="Field Value">
+                    </div>
+                    <button class="btn btn-danger" data-role="remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button class="btn btn-primary" data-role="add">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>  <!-- /div.form-inline -->
+            </div>  <!-- /div[data-role="dynamic-fields"] -->
+        </div>  <!-- /div.col-md-12 -->
+    </div>  <!-- /div.row -->
+</div>
+
+<div>
+    <button type="submit">Save</button>
+</div>
+
+
+
+<style>
+    html, body {
+        padding-top: 20px;
+    }
+
+    [data-role="dynamic-fields"] > .form-inline + .form-inline {
+        margin-top: 0.5em;
+    }
+
+    [data-role="dynamic-fields"] > .form-inline [data-role="add"] {
+        display: none;
+    }
+
+    [data-role="dynamic-fields"] > .form-inline:last-child [data-role="add"] {
+        display: inline-block;
+    }
+
+    [data-role="dynamic-fields"] > .form-inline:last-child [data-role="remove"] {
+        display: none;
+    }
+</style>

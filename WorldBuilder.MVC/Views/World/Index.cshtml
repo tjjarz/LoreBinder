@@ -1,0 +1,70 @@
+﻿@using System.Xml.Linq
+@using System.Xml
+@model XDocument
+
+
+@{
+
+    ViewBag.Title = "Index";
+
+}
+
+
+<div>
+    @{
+
+        IEnumerable<XElement> data = Model.Root.Elements();
+
+        foreach (var xelement in data)
+        {
+
+            if (xelement.Elements().Count() > 1)
+            {
+                <section class="@xelement.Name">
+                    <h2>@xelement.Name</h2>
+
+                    @foreach (var child in xelement.Elements())
+                    {
+                        <div class="@child.Name" style="border: 3px solid grey">
+
+                            @if (child.Elements().Count() > 1)
+                            {
+                                foreach (var gchild in child.Elements())
+                                {
+
+                                    if (gchild.Elements().Count() < 2)
+                                    {
+                                        if (gchild.Name.ToString().ToLower() == "name")
+                                        {<div class="Name"><h3>@gchild.Value</h3></div> }
+
+                                    else
+                                    { <div style="background-color: #FFFFF0"><p>@gchild.Value</p></div> }
+                            }
+
+                            else
+                            {
+                                <div><p>@gchild.Name:</p></div>
+
+
+                                <div style="background-color: #FFFFF0">
+                                    @foreach (var kid in gchild.Elements())
+                                    {
+                                        if (kid.Elements().Count() < 2)
+                                        {<p>@kid.Value</p> }
+
+                                    else
+                                    { <p>@kid.Descendants().First().Value - @kid.Descendants().Last().Value</p>}
+                            }
+                                </div>
+                            }
+                        }
+                    }
+                        </div>
+                        <br />
+                    }
+                </section>
+            }
+            <br />
+        }
+    }
+</div>
