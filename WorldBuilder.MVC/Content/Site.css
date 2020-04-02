@@ -1,12 +1,22 @@
-﻿body {
+﻿:root {
+    --field-name-color: #c4c4c4;
+    --field-value-color: #eaeaea;
+    --field-dark-name: #8e8e8e;
+    --main-bg: #c4c4c4;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: #8e8e8e;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background: #8e8e8e;
+    background-color: var(--main-bg);
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -20,5 +30,9 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 400px;
+}
+
+::placeholder {
+    color: #000000;
 }

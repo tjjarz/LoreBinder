@@ -40,13 +40,10 @@
             <div data-role="dynamic-fields">
                 <div class="form-inline">
                     <div class="form-group">
-                        <label class="sr-only" for="field-name">Field Name</label>
-                        <input type="text" class="form-control" id="field-name" placeholder="Field Name">
-                    </div>
-                    <span>-</span>
-                    <div class="form-group">
+                        <label class="sr-only" for="field-name" color="#ffffff">Field Name</label>
+                        <input type="text" class="form-control" id="field-name" placeholder="Field Name"> 
                         <label class="sr-only" for="field-value">Field Value</label>
-                        <input type="text" class="form-control" id="field-value" placeholder="Field Value">
+                        <textarea type="text" class="form-control" id="field-value" placeholder="Field Value"></textarea>
                     </div>
                     <button class="btn btn-danger" data-role="remove">
                         <span class="glyphicon glyphicon-remove"></span>
@@ -61,7 +58,7 @@
 </div>
 
 <div>
-    <button type="submit">Save</button>
+    <button class="btn btn-primary" data-role="save" type="submit">Save</button>
 </div>
 
 
@@ -69,6 +66,27 @@
 <style>
     html, body {
         padding-top: 20px;
+    }
+
+    .form-control {
+        position: relative;
+        max-width: 100%;
+        width: 80%;
+    }
+
+    textarea {
+        text-decoration: none;
+    }
+
+    .btn {
+        background-color: #6f64ff;
+        padding: 1px 6px;
+    }
+
+    #field-name {
+        background-color: #8e8e8e;
+        font-weight: 700;
+        color: #ffffff;
     }
 
     [data-role="dynamic-fields"] > .form-inline + .form-inline {
