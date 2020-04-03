@@ -36,7 +36,7 @@ namespace WorldBuilder.MVC.Controllers
         {
             XDocument xdoc = DocGrabber();
 
-            xdoc.Add(xtree);
+            xdoc.AddAfterSelf(xtree);
             
             return View(xtree);
         }

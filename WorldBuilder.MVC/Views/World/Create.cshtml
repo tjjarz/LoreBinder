@@ -38,45 +38,41 @@
 
 <h2>Create</h2>
 <!--Grabbed from https://bootsnipp.com/snippets/VPRlZ-->
+
+@{
+    XElement rootNewObject = new XElement("newObject");
+    rootNewObject.Add(,);
+
+}
+
+<div>
+    @{     
+        Html.TextArea(model => rootNewObject.Add("something", "some stuff"));
+     }
+    }
+</div>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
             <div data-role="dynamic-fields">
                 <div class="form-inline">
-                    <div class="form-group">
-                        <label class="sr-only" for="field-name" color="#ffffff">Field Name</label>
-                        <input type="text" class="form-control" id="field-name" placeholder="Catagory">
-                        <label class="sr-only" for="field-value">Field Value</label>
-                        <textarea type="text" class="form-control" id="field-value" placeholder="Character, Item etc"></textarea>
-                    </div>
-                    <div class="col-md-10">
-                        @{
-                            Element element = new Element();
-                            string XLName = "";
-                            string XLValue = "";
-                            Model.AddAfterSelf()
-                            <input name="model[@i]." value="@Model.Values.ElementAt(i).Key" />
-                            <input name="Values[@i].Value" value="@Model.Values.ElementAt(i).Value" />
-                            //Html.EditorFor(element => element.XLName, new { htmlAttributes: new { @class = "control-label col-md-2" } })
-                        }
-                    </div>
-                        <button class="btn btn-danger" data-role="remove">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                        <button class="btn btn-primary" data-role="add">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </div>  <!-- /div.form-inline -->
-                </div>  <!-- /div[data-role="dynamic-fields"] -->
-        </div>  <!-- /div.col-md-12 -->
-    </div>  <!-- /div.row -->
+                        <div class="row form-horizontal">
+                            <button class="btn btn-danger" data-role="remove">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                            <button class="btn btn-primary" data-role="add">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                            <input type="text" class="form-control" id="field-name" placeholder="Catagory" name="xLName[0]">
+                            <textarea type="text" class="form-control" id="field-value" placeholder="Character, Item etc" name="xLValue[0]"></textarea>
+                        </div>
+                </div>  <!-- /div.form-inline -->
+            </div>  <!-- /div[data-role="dynamic-fields"] -->
+            <div class="col-md-12">
+            </div>  <!-- /div.col-md-12 -->
 </div>
 
 <div>
     <button class="btn btn-primary" data-role="save" type="submit">Save</button>
 </div>
-
-
 
 <style>
     html, body {
