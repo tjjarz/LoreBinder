@@ -8,7 +8,7 @@ namespace WorldBuilder.MVC.Models
 {
     public class Element
     {
-        [Required]
+        
         public string XLName { get; set; }
         public string XLValue { get; set; }
 
