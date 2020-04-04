@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Xml.Linq;
 using System.Web;
 
 namespace WorldBuilder.MVC.Models
 {
+
     public class Element
     {
         
@@ -20,7 +22,7 @@ namespace WorldBuilder.MVC.Models
         public string XLValueFormatting { get; set; }
     }
 
-    public class ListElement : Element
+    public class NestedElement : Element
     {
         //public string XLName { get; set; }
 

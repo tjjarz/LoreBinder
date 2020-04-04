@@ -1,7 +1,28 @@
-﻿@using System.Xml.Linq;
+﻿
+@using System.Xml.Linq;
 @using WorldBuilder.MVC.Models;
-@model XElement
+@model List<XElement>
+@{
+    
+    
+    //Model.Add(new XElement("CurrentData","stuff"));
+    if (IsPost)
+    {
+        int count = 0;
 
+        while (true)
+        {
+            string curxlname = "xlName[" + count + "]";
+            string curxlvalue = "xlValue[" + count + "]";
+            //int escape = Request.Form[curxlname].Count();
+            if (Request.Form[curxlname].Count() == 0) { break; }
+            var newxlname = Request.Form[curxlname];
+            var newxlValue = Request.Form[curxlvalue];
+
+            Model.Add(new XElement(newxlname, newxlValue));
+        }
+    }
+}
 
 @{
     ViewBag.Title = "Create";
@@ -9,6 +30,7 @@
 
 <script type="text/javascript">
     $(function () {
+        var formCount = 0;
         // Remove button click
         $(document).on(
             'click',
@@ -19,7 +41,7 @@
             }
         );
         // Add button click
-        $(document).on(
+        /*$(document).on(
             'click',
             '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
             function (e) {
@@ -31,7 +53,54 @@
                 });
                 container.append(new_field_group);
             }
+        );*/
+        $(document).on(
+            'click',
+            '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+            function (e) {
+                e.preventDefault();
+                formCount++;
+                if (formCount > 0) {
+                    $("#btnrmv").prop("disabled", false);
+                }
+                var container = $(this).closest('[data-role="dynamic-fields"]');
+                new_field_group = container.children().filter('.form-inline:first-child').clone();
+                new_field_group.find('input').each(function () {
+
+                    if (this.name.startsWith("xlName")) {
+                        this.name = "xlName[" + formCount + "]";
+                    }
+                    $(this).val('');
+                });
+                new_field_group.find('textarea').each(function () {
+
+                    if (this.name.startsWith("xlValue")) {
+                        this.name = "xlValue[" + formCount + "]";
+                    }
+                    $(this).val('');
+                });
+                container.append(new_field_group);
+                //bindKeyUpEvent();
+            }
         );
+        $(document).on(
+            'click',
+            '[data-role="draftsave"]',
+            function () {
+                var count = 0;
+
+                while (false) {
+                    var curxlname = "xlName[" + count + "]";
+                    var curxlvalue = "xlValue[" + count + "]";
+                    //int escape = Request.Form[curxlname].Count();
+                    if (Request.Form[curxlname].Count() == 0) { break; }
+                    var newxlname = Request.Form[curxlname];
+                    var newxlValue = Request.Form[curxlvalue];
+
+                    Model.Add(new XElement(newxlname, newxlValue));
+                }
+            }
+        )
     });
 </script>
 
@@ -39,40 +108,32 @@
 <h2>Create</h2>
 <!--Grabbed from https://bootsnipp.com/snippets/VPRlZ-->
 
-@{
-    XElement rootNewObject = new XElement("newObject");
-    rootNewObject.Add(,);
-
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div data-role="dynamic-fields">
+            <div class="form-inline">
+                <div class="row form-horizontal">
+                    <input type="text" class="form-control" id="field-name" placeholder="Catagory" name="xlName[0]">
+                    <textarea type="text" class="form-control" id="field-value" placeholder="Character, Item etc" name="xlValue[0]"></textarea>
+                    <div class="col-md-12">
+                    </div>  <!-- /div.col-md-12 -->
+                    <button class="btn btn-danger" data-role="remove">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                    <button class="btn btn-primary" data-role="add">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </div>
+            </div>  <!-- /div.form-inline -->
+        </div>  <!-- /div[data-role="dynamic-fields"] -->
+        <div class="col-md-12">
+        </div>  <!-- /div.col-md-12 -->
+        <button class="btn btn-primary" data-role="draftsave">Save</button>
+        <input type="submit" value="Submit" class="btn btn-default" />
+    </div>
 }
 
-<div>
-    @{     
-        Html.TextArea(model => rootNewObject.Add("something", "some stuff"));
-     }
-    }
-</div>
-<div class="container">
-            <div data-role="dynamic-fields">
-                <div class="form-inline">
-                        <div class="row form-horizontal">
-                            <button class="btn btn-danger" data-role="remove">
-                                <span class="glyphicon glyphicon-remove"></span>
-                            </button>
-                            <button class="btn btn-primary" data-role="add">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                            <input type="text" class="form-control" id="field-name" placeholder="Catagory" name="xLName[0]">
-                            <textarea type="text" class="form-control" id="field-value" placeholder="Character, Item etc" name="xLValue[0]"></textarea>
-                        </div>
-                </div>  <!-- /div.form-inline -->
-            </div>  <!-- /div[data-role="dynamic-fields"] -->
-            <div class="col-md-12">
-            </div>  <!-- /div.col-md-12 -->
-</div>
-
-<div>
-    <button class="btn btn-primary" data-role="save" type="submit">Save</button>
-</div>
 
 <style>
     html, body {
