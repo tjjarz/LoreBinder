@@ -177,7 +177,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ElementModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -256,6 +255,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorldBuilder.Data\WorldBuilder.Data.csproj">
+      <Project>{9d3a80c1-03fe-457c-9849-d44ef4c708eb}</Project>
+      <Name>WorldBuilder.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorldBuilder.Model\WorldBuilder.Models.csproj">
+      <Project>{d5464d65-f3fd-4599-8898-68774074f2f1}</Project>
+      <Name>WorldBuilder.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WorldBuilder.Services\WorldBuilder.Services.csproj">
+      <Project>{70181d9c-3733-4cab-a807-335a1fd5f33c}</Project>
+      <Name>WorldBuilder.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<characters>
+  <character>
+    <name>phil</name>
+    <occupation>scientist</occupation>
+  </character>
+  <character>
+    <name>lem</name>
+    <occupation>also a scientist</occupation>
+    <associations>
+      <association>
+        <nature>friend</nature>
+        <subject>phil</subject>
+      </association>
+    </associations>
+  </character>
+</characters>

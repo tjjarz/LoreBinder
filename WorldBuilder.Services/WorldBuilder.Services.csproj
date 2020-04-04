@@ -42,6 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorldBuilderService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorldBuilder.Model\WorldBuilder.Models.csproj">
+      <Project>{d5464d65-f3fd-4599-8898-68774074f2f1}</Project>
+      <Name>WorldBuilder.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

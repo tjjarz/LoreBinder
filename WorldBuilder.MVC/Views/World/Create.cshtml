@@ -1,33 +1,35 @@
-﻿
-@using System.Xml.Linq;
+﻿@using System.Xml.Linq;
+@using System.Collections.Generic;
 @using WorldBuilder.MVC.Models;
-@model List<XElement>
+
+@model List<Element>
 @{
-    
-    
+    /*
+
     //Model.Add(new XElement("CurrentData","stuff"));
     if (IsPost)
     {
         int count = 0;
 
-        while (true)
+        while (false)
         {
-            string curxlname = "xlName[" + count + "]";
-            string curxlvalue = "xlValue[" + count + "]";
+            string curxlname = "XLName[" + count + "]";
+            string curxlvalue = "XLValue[" + count + "]";
             //int escape = Request.Form[curxlname].Count();
             if (Request.Form[curxlname].Count() == 0) { break; }
             var newxlname = Request.Form[curxlname];
             var newxlValue = Request.Form[curxlvalue];
 
-            Model.Add(new XElement(newxlname, newxlValue));
+            //Model.Add(newxlname);
+            //Model.Add(newxlValue);
         }
-    }
+    }*/
 }
 
 @{
     ViewBag.Title = "Create";
 }
-
+<h1>@Model[0]</h1>
 <script type="text/javascript">
     $(function () {
         var formCount = 0;
@@ -66,16 +68,16 @@
                 var container = $(this).closest('[data-role="dynamic-fields"]');
                 new_field_group = container.children().filter('.form-inline:first-child').clone();
                 new_field_group.find('input').each(function () {
-
-                    if (this.name.startsWith("xlName")) {
-                        this.name = "xlName[" + formCount + "]";
+                    if (this.name)
+                    if (this.name.endsWith("XLName")) {
+                        this.name = "[" + formCount + "].XLName";
                     }
                     $(this).val('');
                 });
                 new_field_group.find('textarea').each(function () {
 
-                    if (this.name.startsWith("xlValue")) {
-                        this.name = "xlValue[" + formCount + "]";
+                    if (this.name.endsWith("XLValue")) {
+                        this.name = "[" + formCount + "].XLValue";
                     }
                     $(this).val('');
                 });
@@ -89,15 +91,17 @@
             function () {
                 var count = 0;
 
-                while (false) {
-                    var curxlname = "xlName[" + count + "]";
-                    var curxlvalue = "xlValue[" + count + "]";
+                while (true) {
+                    var curxlname = "XLName[" + count + "]";
+                    var curxlvalue = "XLValue[" + count + "]";
                     //int escape = Request.Form[curxlname].Count();
                     if (Request.Form[curxlname].Count() == 0) { break; }
                     var newxlname = Request.Form[curxlname];
                     var newxlValue = Request.Form[curxlvalue];
 
-                    Model.Add(new XElement(newxlname, newxlValue));
+                    //Model.Add(new XElement(newxlname, newxlValue));
+                    Model.Add(newxlname);
+                    Model.Add(newxlValue);
                 }
             }
         )
@@ -112,10 +116,10 @@
 {
     <div class="container">
         <div data-role="dynamic-fields">
-            <div class="form-inline">
+            <div class="form-inline form-group">
                 <div class="row form-horizontal">
-                    <input type="text" class="form-control" id="field-name" placeholder="Catagory" name="xlName[0]">
-                    <textarea type="text" class="form-control" id="field-value" placeholder="Character, Item etc" name="xlValue[0]"></textarea>
+                    <input type="text" class="form-control" id="field-name" placeholder="Catagory" name="[0].XLName">
+                    <textarea type="text" class="form-control" id="field-value" placeholder="Character, Item etc" name="[0].XLValue"></textarea>
                     <div class="col-md-12">
                     </div>  <!-- /div.col-md-12 -->
                     <button class="btn btn-danger" data-role="remove">
@@ -127,10 +131,12 @@
                 </div>
             </div>  <!-- /div.form-inline -->
         </div>  <!-- /div[data-role="dynamic-fields"] -->
+        <div class="form-group">
+            <!--<button class="btn btn-primary" data-role="draftsave">Save</button>-->
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
         <div class="col-md-12">
         </div>  <!-- /div.col-md-12 -->
-        <button class="btn btn-primary" data-role="draftsave">Save</button>
-        <input type="submit" value="Submit" class="btn btn-default" />
     </div>
 }
 
