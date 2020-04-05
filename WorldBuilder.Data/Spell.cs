@@ -1,9 +1,13 @@
-﻿namespace WorldBuilder.Data
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WorldBuilder.Data
 {
     public class Spell
     {
+        [Key]
         public int SpellID { get; set; }
         //public string BindID { get { return "SP" + SpellID; } }
+        [Required]
         public string Name { get; set; }
         public string SpellLevel { get; set; }
         public string SpellSchool { get; set; }

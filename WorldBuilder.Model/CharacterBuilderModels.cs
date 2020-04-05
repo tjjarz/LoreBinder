@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace WorldBuilder.Data
+namespace WorldBuilder.Models
 {
-    public class PlayerCharacter
+    public class CharacterBuild
     {
         [Key]
         public int PCID { get; set; }
@@ -50,6 +54,5 @@ namespace WorldBuilder.Data
         public int Persuasion { get; set; }
         public string Player { get; set; }
         public Guid OwnerID { get; set; }
-        //public List<StatusEffect> Conditions { get; set; }  //left out for future live play feature & my sanity
     }
 }

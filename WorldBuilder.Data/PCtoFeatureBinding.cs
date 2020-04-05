@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WorldBuilder.Data
 {
     public class PCtoFeatureBinding
     {
+        [Key]
         public int PCtoFEBindID { get; set; }
 
         [ForeignKey(nameof(PC))]
