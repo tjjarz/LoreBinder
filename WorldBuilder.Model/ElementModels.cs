@@ -41,9 +41,7 @@ namespace WorldBuilder.MVC.Models
     public class TextBlock : Element
     {
         //public string XLName { get; set; }
-
         new public List<TextElement> XLValue { get; set; }
-
     }
 
     public class Gaggle

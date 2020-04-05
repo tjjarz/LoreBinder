@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using WorldBuilder.Data;
 
 namespace WorldBuilder.MVC.Models
 {
@@ -24,6 +25,12 @@ namespace WorldBuilder.MVC.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<PlayerCharacter> PlayerCharacters { get; set; }
+        public DbSet<Feature> Features { get; set; }
+        public DbSet<Spell> Spells { get; set; }
+        public DbSet<PCtoSpellBinding> PCSpells { get; set; }
+        public DbSet<PCtoFeatureBinding> PCFeatures { get; set; }
 
         public static ApplicationDbContext Create()
         {
