@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WorldBuilder.Data
+﻿namespace WorldBuilder.Data
 {
-    class Feature
+    public class Feature
     {
         //this should cover Feats, Features & Attacks
         public int FeatureID { get; set; }

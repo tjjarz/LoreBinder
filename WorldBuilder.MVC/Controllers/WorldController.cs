@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
 using System.Xml;
 using System.Xml.Linq;
-
-using WorldBuilder.MVC.Models;
-using WorldBuilder.Services;
+using WorldBuilder.Models;
 
 namespace WorldBuilder.MVC.Controllers
 {
@@ -34,7 +28,7 @@ namespace WorldBuilder.MVC.Controllers
         public ActionResult Create()
         {
             List<Element> Model = new List<Element>();
-            Model.Add(new Element("!.tree-start","!.voidvalue"));
+            Model.Add(new Element("!.tree-start", "!.voidvalue"));
             if (Model == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "We don't need to see his identification."); }
             if (Model[0].XLName != "!.tree-start") { return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "these aren't the droids we're looking for..."); }
             return View(Model);
@@ -44,11 +38,11 @@ namespace WorldBuilder.MVC.Controllers
         [HttpPost]
         public ActionResult Create(List<Element> workingtree)
         {
-            if (workingtree == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest,"Negative, didn't go in, just impacted on the surface."); }
+            if (workingtree == null) { return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Negative, didn't go in, just impacted on the surface."); }
 
             XDocument xdoc = DocGrabber();
             //xdoc.Add(xtree);
-            
+
             //WorldService _service = new WorldService;
 
             XDocument workingxdoc = XLTreeBuilder(workingtree);
@@ -89,17 +83,17 @@ namespace WorldBuilder.MVC.Controllers
             XDocument newTree = new XDocument();
             using (XmlWriter writer = newTree.CreateWriter())
             {
-                bool nesting = false;
+                //bool nesting = false;
                 foreach (Element elem in chaff)
                 {
                     if (elem.XLValue == "!.nestend")
                     {
-                        nesting = false;
+                        //nesting = false;
                         writer.WriteFullEndElement();
                     }
                     else if (elem.XLValue == "!.neststart" || elem.XLValue == null || elem.XLValue == "")
                     {
-                        nesting = true;
+                        //nesting = true;
                         writer.WriteStartElement(elem.XLName);
                     }
                     else

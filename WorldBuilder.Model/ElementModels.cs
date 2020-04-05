@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WorldBuilder.MVC.Models
+namespace WorldBuilder.Models
 {
 
     public class Element

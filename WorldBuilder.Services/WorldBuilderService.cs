@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
-using WorldBuilder.MVC.Models;
+using WorldBuilder.Models;
 
 namespace WorldBuilder.Services
 {
@@ -31,17 +28,17 @@ namespace WorldBuilder.Services
             XDocument newTree = new XDocument();
             using (XmlWriter writer = newTree.CreateWriter())
             {
-                bool nesting = false;
+                //bool nesting = false;
                 foreach (Element elem in chaff)
                 {
                     if (elem.XLValue == "!.nestend")
                     {
-                        nesting = false;
+                        //nesting = false;
                         writer.WriteFullEndElement();
                     }
                     else if (elem.XLValue == "!.neststart" || elem.XLValue == null || elem.XLValue == "")
                     {
-                        nesting = true;
+                        //nesting = true;
                         writer.WriteStartElement(elem.XLName);
                     }
                     else

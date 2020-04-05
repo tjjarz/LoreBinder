@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WorldBuilder.Data;
 
 namespace WorldBuilder.Services
 {
-    class PlayerCharacterService
+    public class PlayerCharacterService
     {
+        private readonly ApplicationDbContext _db;
+        private readonly string _userID;
+        public PlayerCharacterService(string userID)
+        {
+            _db = new ApplicationDbContext();
+            _userID = userID;
+        }
+
+
     }
 }
