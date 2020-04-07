@@ -8,14 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldBuilder.Data;
-using WorldBuilder.Models;
 using WorldBuilder.Services;
 
 namespace WorldBuilder.MVC.Controllers
 {
-    public class PlayerController : Controller
+    public class FeaturesController : Controller
     {
-        private readonly ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         private WorldIndexService CreateWorldIndexService()
         {
@@ -26,119 +25,106 @@ namespace WorldBuilder.MVC.Controllers
             return worldIndexService;
         }
 
-        // GET: Player
+        // GET: Features
         public ActionResult Index()
         {
-            return View(db.PlayerCharacters.ToList());
+            return View(db.Features.ToList());
         }
 
-        [Authorize]
-        private PlayerCharacterService CreatePlayerChararacterService()
-        {
-            //shouldn't this be a Guid?
-            string userId = User.Identity.GetUserId();
-            var characterService = new PlayerCharacterService(userId);
-
-            return characterService;
-        }
-
-        // GET: Player/Details/5
+        // GET: Features/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PlayerCharacter playerCharacter = db.PlayerCharacters.Find(id);
-            if (playerCharacter == null)
+            Feature feature = db.Features.Find(id);
+            if (feature == null)
             {
                 return HttpNotFound();
             }
-            return View(playerCharacter);
+            return View(feature);
         }
 
-        // GET: Player/Create
+        // GET: Features/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Player/Create
+        // POST: Features/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "PCID,NameShort,NameFull,Level,Class,Species,Age,Background,PersonalHistory,Personality,CurHP,CurHD,MaxHP,HitDice,ProficiencyBonus,STR,DEX,CON,INT,WIS,CHA,Athletics,Acrobatics,SleightofHand,Stealth,Arcana,History,Investigation,Nature,Religion,AnimalHandling,Insight,Medicine,Perception,Survival,Deception,Intimidation,Performance,Persuasion,Player,OwnerID")] PlayerCharacter playerCharacter)
-        public ActionResult Create(CharacterBuild playerCharacter)
+        public ActionResult Create([Bind(Include = "FeatureID,Name,Summary,FullText,Mechanics,Source")] Feature feature)
         {
             if (ModelState.IsValid)
             {
-                PlayerCharacterService characterService = CreatePlayerChararacterService();
-                db.PlayerCharacters.Add(characterService.BuildPlayerCharacter(playerCharacter));
+                db.Features.Add(feature);
                 WorldIndexService worldIndexService = CreateWorldIndexService();
-                //db.PlayerCharacters.Create(playerCharacter);
-                WorldIndexEntry entry = worldIndexService.AddPlayerCharacter(db.PlayerCharacters.Last()); //playing with FIRE here!
+                WorldIndexEntry entry = worldIndexService.AddFeature(feature);
                 db.WorldIndex.Add(entry);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }   
+            }
 
-            return View(playerCharacter);
+            return View(feature);
         }
 
-        // GET: Player/Edit/5
+        // GET: Features/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PlayerCharacter playerCharacter = db.PlayerCharacters.Find(id);
-            if (playerCharacter == null)
+            Feature feature = db.Features.Find(id);
+            if (feature == null)
             {
                 return HttpNotFound();
             }
-            return View(playerCharacter);
+            return View(feature);
         }
 
-        // POST: Player/Edit/5
+        // POST: Features/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PCID,NameShort,NameFull,Level,Class,Species,Age,Background,PersonalHistory,Personality,CurHP,CurHD,MaxHP,HitDice,ProficiencyBonus,STR,DEX,CON,INT,WIS,CHA,Athletics,Acrobatics,SleightofHand,Stealth,Arcana,History,Investigation,Nature,Religion,AnimalHandling,Insight,Medicine,Perception,Survival,Deception,Intimidation,Performance,Persuasion,Player")] PlayerCharacter playerCharacter)
+        public ActionResult Edit([Bind(Include = "FeatureID,Name,Summary,FullText,Mechanics,Source")] Feature feature)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(playerCharacter).State = EntityState.Modified;
+                db.Entry(feature).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(playerCharacter);
+            return View(feature);
         }
 
-        // GET: Player/Delete/5
+        // GET: Features/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PlayerCharacter playerCharacter = db.PlayerCharacters.Find(id);
-            if (playerCharacter == null)
+            Feature feature = db.Features.Find(id);
+            if (feature == null)
             {
                 return HttpNotFound();
             }
-            return View(playerCharacter);
+            return View(feature);
         }
 
-        // POST: Player/Delete/5
+        // POST: Features/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PlayerCharacter playerCharacter = db.PlayerCharacters.Find(id);
-            db.PlayerCharacters.Remove(playerCharacter);
+            Feature feature = db.Features.Find(id);
+            db.Features.Remove(feature);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -27,13 +27,17 @@ namespace WorldBuilder.Data
 
         public DbSet<PlayerCharacter> PlayerCharacters { get; set; }
         public DbSet<Feature> Features { get; set; }
+        public DbSet<Item> Items { get; set; }
         public DbSet<Spell> Spells { get; set; }
+        public DbSet<WorldIndexEntry> WorldIndex { get; set; }
         public DbSet<PCtoSpellBinding> PCSpells { get; set; }
         public DbSet<PCtoFeatureBinding> PCFeatures { get; set; }
+        public DbSet<PCtoItemBinding> PCItems { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
     }
 }

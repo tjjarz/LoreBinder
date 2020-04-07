@@ -13,7 +13,7 @@ namespace WorldBuilder.Models
         public int PCID { get; set; }
         //public string BindID { get { return "PC" + PCID; } }
         [Required]
-        public string NameShort { get; set; }
+        public string Name { get; set; }
         public string NameFull { get; set; }
         public string Level { get; set; } //string not int because no math also "2nd" level... etc
         public string Class { get; set; }
@@ -53,6 +53,6 @@ namespace WorldBuilder.Models
         public int Performance { get; set; }
         public int Persuasion { get; set; }
         public string Player { get; set; }
-        public Guid OwnerID { get; set; }
+        //public Guid OwnerID { get; set; }
     }
 }

@@ -20,7 +20,9 @@ namespace WorldBuilder.Data
         public bool Somatic { get; set; }
         public bool Material { get; set; }
         public string SpellEffectType { get; set; }
-        public string SpellDescription { get; set; } //gonna be "rich text"
-        public string Math { get; set; }
+        public string Summary { get; set; }
+        public string FullText { get; set; } //gonna be "rich text"
+        public string Mechanics { get; set; }
+        public string Notes { get; set; }
     }
 }

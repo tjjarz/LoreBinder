@@ -8,14 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldBuilder.Data;
-using WorldBuilder.Models;
 using WorldBuilder.Services;
 
 namespace WorldBuilder.MVC.Controllers
 {
-    public class PlayerController : Controller
+    public class SpellsController : Controller
     {
-        private readonly ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         private WorldIndexService CreateWorldIndexService()
         {
@@ -26,119 +25,106 @@ namespace WorldBuilder.MVC.Controllers
             return worldIndexService;
         }
 
-        // GET: Player
+        // GET: Spells
         public ActionResult Index()
         {
-            return View(db.PlayerCharacters.ToList());
+            return View(db.Spells.ToList());
         }
 
-        [Authorize]
-        private PlayerCharacterService CreatePlayerChararacterService()
-        {
-            //shouldn't this be a Guid?
-            string userId = User.Identity.GetUserId();
-            var characterService = new PlayerCharacterService(userId);
-
-            return characterService;
-        }
-
-        // GET: Player/Details/5
+        // GET: Spells/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PlayerCharacter playerCharacter = db.PlayerCharacters.Find(id);
-            if (playerCharacter == null)
+            Spell spell = db.Spells.Find(id);
+            if (spell == null)
             {
                 return HttpNotFound();
             }
-            return View(playerCharacter);
+            return View(spell);
         }
 
-        // GET: Player/Create
+        // GET: Spells/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Player/Create
+        // POST: Spells/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "PCID,NameShort,NameFull,Level,Class,Species,Age,Background,PersonalHistory,Personality,CurHP,CurHD,MaxHP,HitDice,ProficiencyBonus,STR,DEX,CON,INT,WIS,CHA,Athletics,Acrobatics,SleightofHand,Stealth,Arcana,History,Investigation,Nature,Religion,AnimalHandling,Insight,Medicine,Perception,Survival,Deception,Intimidation,Performance,Persuasion,Player,OwnerID")] PlayerCharacter playerCharacter)
-        public ActionResult Create(CharacterBuild playerCharacter)
+        public ActionResult Create([Bind(Include = "SpellID,Name,SpellLevel,SpellSchool,CastTime,RangeArea,Duration,Concentration,Components,Verbal,Somatic,Material,SpellEffectType,Summary,FullText,Mechanics")] Spell spell)
         {
             if (ModelState.IsValid)
             {
-                PlayerCharacterService characterService = CreatePlayerChararacterService();
-                db.PlayerCharacters.Add(characterService.BuildPlayerCharacter(playerCharacter));
                 WorldIndexService worldIndexService = CreateWorldIndexService();
-                //db.PlayerCharacters.Create(playerCharacter);
-                WorldIndexEntry entry = worldIndexService.AddPlayerCharacter(db.PlayerCharacters.Last()); //playing with FIRE here!
+                WorldIndexEntry entry = worldIndexService.AddSpell(spell);
+                db.Spells.Add(spell);
                 db.WorldIndex.Add(entry);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }   
+            }
 
-            return View(playerCharacter);
+            return View(spell);
         }
 
-        // GET: Player/Edit/5
+        // GET: Spells/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PlayerCharacter playerCharacter = db.PlayerCharacters.Find(id);
-            if (playerCharacter == null)
+            Spell spell = db.Spells.Find(id);
+            if (spell == null)
             {
                 return HttpNotFound();
             }
-            return View(playerCharacter);
+            return View(spell);
         }
 
-        // POST: Player/Edit/5
+        // POST: Spells/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PCID,NameShort,NameFull,Level,Class,Species,Age,Background,PersonalHistory,Personality,CurHP,CurHD,MaxHP,HitDice,ProficiencyBonus,STR,DEX,CON,INT,WIS,CHA,Athletics,Acrobatics,SleightofHand,Stealth,Arcana,History,Investigation,Nature,Religion,AnimalHandling,Insight,Medicine,Perception,Survival,Deception,Intimidation,Performance,Persuasion,Player")] PlayerCharacter playerCharacter)
+        public ActionResult Edit([Bind(Include = "SpellID,Name,SpellLevel,SpellSchool,CastTime,RangeArea,Duration,Concentration,Components,Verbal,Somatic,Material,SpellEffectType,Summary,FullText,Mechanics")] Spell spell)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(playerCharacter).State = EntityState.Modified;
+                db.Entry(spell).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(playerCharacter);
+            return View(spell);
         }
 
-        // GET: Player/Delete/5
+        // GET: Spells/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PlayerCharacter playerCharacter = db.PlayerCharacters.Find(id);
-            if (playerCharacter == null)
+            Spell spell = db.Spells.Find(id);
+            if (spell == null)
             {
                 return HttpNotFound();
             }
-            return View(playerCharacter);
+            return View(spell);
         }
 
-        // POST: Player/Delete/5
+        // POST: Spells/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PlayerCharacter playerCharacter = db.PlayerCharacters.Find(id);
-            db.PlayerCharacters.Remove(playerCharacter);
+            Spell spell = db.Spells.Find(id);
+            db.Spells.Remove(spell);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,16 +1,14 @@
 ﻿@using System.Xml.Linq;
 @using System.Collections.Generic;
-@using WorldBuilder.MVC.Models;
+@using WorldBuilder.Models;
 
 @model List<Element>
 @{
     /*
-
     //Model.Add(new XElement("CurrentData","stuff"));
     if (IsPost)
     {
         int count = 0;
-
         while (false)
         {
             string curxlname = "XLName[" + count + "]";
@@ -19,7 +17,6 @@
             if (Request.Form[curxlname].Count() == 0) { break; }
             var newxlname = Request.Form[curxlname];
             var newxlValue = Request.Form[curxlvalue];
-
             //Model.Add(newxlname);
             //Model.Add(newxlValue);
         }

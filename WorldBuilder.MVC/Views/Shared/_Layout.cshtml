@@ -10,26 +10,23 @@
 
 </head>
 <body style="background-color: #7d7d7d">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 @Html.ActionLink("World Builder", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
+                    @*<button><a href="/World">World</a></button>*@
                     <li>@Html.ActionLink("World", "Index", "World")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Characters", "Index", "Player")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </nav>
+
     <div class="container body-content" style="background-color: #c4c4c4">
         @RenderBody()
         <hr />
@@ -38,9 +35,194 @@
         </footer>
     </div>
 
-    
+
     @Scripts.Render("~/bundles/bootstrap")
-    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<style>
+    nav {
+        background-color: #7e5096;
+    }
+
+    .navbar-nav > li {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        padding-right: 15px;
+        text-decoration: none;
+    }
+
+    a {
+        color: #FFFFFF;
+        padding: 5px;
+    }
+
+
+    .btn:hover {
+        background-color: #7e5096;
+        color: #FFFFFF;
+    }
+    .btn{
+        background-color: #c4c4c4;
+        color: black;
+        border: 3px solid #6e6e6e;
+        font-weight: 700;
+    }
+
+    a:hover {
+        color: #FFFFFF;
+        background-color: #8e8e8e;
+        padding: 5px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .snazy-box {
+        border: 5px solid #6e6e6e;
+        border-radius: 20px 20px 20px 20px;
+        margin: 3px;
+        background-color: #ffffff;
+    }
+
+    .snazy-box-small-inline {
+        border: 5px solid #6e6e6e;
+        border-radius: 20px 20px 20px 20px;
+        margin: 3px;
+        background-color: #ffffff;
+        min-width: 290px;
+    }
+
+    .snazy-box-section {
+        border: 5px solid #6e6e6e;
+        border-radius: 20px 20px 20px 20px;
+        margin: 3px;
+        padding: 5px;
+        padding-bottom: 0px;
+        background-color: #aeaeae;
+    }
+
+    .form-control:disabled {
+        background-color: #8a8e8e;
+        font-weight: 700;
+        color: #ffffff;
+        width: 200px;
+        border: none;
+    }
+
+    .form-inline .form-control {
+        
+        /*width: unset;*/
+    }
+
+    .form-control {
+        position: relative;
+        max-width: 100%;
+        width: 80%;
+        display:inline !important;
+    }
+
+    .form-group {
+        margin-bottom: .5rem;
+        margin-left: .5rem;
+    }
+
+    .field-name {
+        /*background-color: #8e8e8e;*/
+        background-color: #000000;
+        font-weight: 700;
+        color: #ffffff;
+        width: 180px !important;
+        z-index: 1;
+        border-radius: 15px 0 0 15px;
+    }
+
+        .field-name:hover {
+            background-color: #7e5096;
+        }
+
+    .field-name-check {
+        /*background-color: #8e8e8e;*/
+        background-color: #000000;
+        font-weight: 700;
+        color: #ffffff;
+        width: 100px !important;
+        z-index: 1;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .field-value {
+        width: 250px !important;
+        /*margin-top: 15px;*/
+        border-radius: 0 15px 15px 0;
+        /*margin-left: -5px;*/
+    }
+
+    .field-value-short {
+        width: 150px !important;
+        /*margin-top: 15px;*/
+        border-radius: 0 15px 15px 0;
+        /*margin-left: -5px;*/
+    }
+
+    .field-value-check {
+        width: 40px !important;
+        /*margin-top: 15px;*/
+        border-radius: 0 15px 15px 0;
+        margin-left: 30px;
+    }
+
+    .field-value-num {
+        width: 100px !important;
+        /*margin-top: 15px;*/
+        border-radius: 0 15px 15px 0;
+        /*margin-left: -5px;*/
+    }
+
+    input {
+        text-align: center;
+    }
+
+    .field-name-textarea {
+        /*background-color: #8e8e8e;*/
+        background-color: #000000;
+        font-weight: 700;
+        color: #ffffff;
+        width: 180px !important;
+        z-index: 1;
+        border-radius: 15px 0 15px 0;
+        position: absolute;
+        top: auto;
+    }
+
+    textarea {
+        overflow: hidden;
+        min-width: 400px;
+        min-height: 100px;
+        margin-top: 35px;
+        margin-left: 5px;
+        margin-right: 5px;
+        resize: both;
+        border: none;
+        border-radius: 15px 15px 15px 15px;
+        outline: none;
+    }
+    .card-title {
+        width: 100%;
+        text-align:center;
+        object-position: center;
+        padding-left: 10%;
+    }
+
+    .col-4{
+        min-width:290px;
+        padding: 0;
+        width:290px;
+    }
+
+    .row{
+        margin-left: 0;
+        margin-right: 0;
+    }
+</style>
