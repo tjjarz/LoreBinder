@@ -25,11 +25,17 @@ namespace WorldBuilder.MVC.Controllers
             return worldIndexService;
         }
 
-
-        // GET: Items
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Items.ToList());
+            var items = from i in db.Items select i;
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(items);
         }
 
         // GET: Items/Details/5
@@ -65,9 +71,11 @@ namespace WorldBuilder.MVC.Controllers
                 db.Items.Add(item);
                 WorldIndexService worldIndexService = CreateWorldIndexService();
                 db.SaveChanges();
-                WorldIndexEntry entry = worldIndexService.AddItem(db.Items.Find(db.Items.Count()+1));
-                db.WorldIndex.Add(entry);
-                db.SaveChanges();
+                //List<int> ids
+                //    var stuff = db.Items.;
+                worldIndexService.UpdateItems();
+                //db.WorldIndex.Add(entry);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

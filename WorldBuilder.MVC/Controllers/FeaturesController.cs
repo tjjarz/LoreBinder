@@ -63,7 +63,9 @@ namespace WorldBuilder.MVC.Controllers
             {
                 db.Features.Add(feature);
                 WorldIndexService worldIndexService = CreateWorldIndexService();
-                WorldIndexEntry entry = worldIndexService.AddFeature(feature);
+                db.SaveChanges();
+
+                WorldIndexEntry entry = worldIndexService.AddFeature(db.Features.Find(db.Features.Count() + 1));
                 db.WorldIndex.Add(entry);
                 db.SaveChanges();
                 return RedirectToAction("Index");

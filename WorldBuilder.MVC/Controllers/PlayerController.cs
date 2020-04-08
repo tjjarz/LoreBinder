@@ -77,8 +77,8 @@ namespace WorldBuilder.MVC.Controllers
                 db.PlayerCharacters.Add(characterService.BuildPlayerCharacter(playerCharacter));
                 WorldIndexService worldIndexService = CreateWorldIndexService();
                 //db.PlayerCharacters.Create(playerCharacter);
-                WorldIndexEntry entry = worldIndexService.AddPlayerCharacter(db.PlayerCharacters.Last()); //playing with FIRE here!
-                db.WorldIndex.Add(entry);
+                //WorldIndexEntry entry = worldIndexService.AddPlayerCharacter(db.PlayerCharacters.Count()+1); 
+                //db.WorldIndex.Add(entry);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }   

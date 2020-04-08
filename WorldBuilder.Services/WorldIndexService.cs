@@ -11,39 +11,56 @@ namespace WorldBuilder.Services
 {
     public class WorldIndexService
     {
-        private readonly ApplicationDbContext _db;
+        private readonly ApplicationDbContext db;
         private readonly string _userID;  //changing to string from Guid to please BasicdB code
         public WorldIndexService(string userID)
         {
-            _db = new ApplicationDbContext();
+            db = new ApplicationDbContext();
             _userID = userID;
         }
 
         public void CreateWorldIndex()
         {
 
-            foreach (var playerCharacter in _db.PlayerCharacters)
+            foreach (var playerCharacter in db.PlayerCharacters)
             {
                 AddPlayerCharacter(playerCharacter);
             }
 
-            foreach (var feature in _db.Features)
+            foreach (var feature in db.Features)
             {
                 AddFeature(feature);
             }
 
-            foreach (var spell in _db.Spells)
+            foreach (var spell in db.Spells)
             {
                 AddSpell(spell);
             }
 
-            foreach (var item in _db.Items)
+            foreach (var item in db.Items)
             {
                 AddItem(item);
             }
 
-            _db.SaveChanges();
+            db.SaveChanges();
             //should probably error check this eventually.
+        }
+
+        public void UpdateItems()
+        //public void UpdateItems(Item item)
+        {
+            var items = from i in db.Items select i;
+            var indicies = from entry in db.WorldIndex select entry;
+            var itemEntries = indicies.Where(x => x.DataType == "Item").Select(x=>x.DataTypeID);
+            
+            foreach (Item item in items)
+            {
+                //if (!itemEntries.Any().Equals(item.ItemID))
+                if (!itemEntries.Contains(item.ItemID));
+                {
+                    AddItem(item);
+                }
+            }
         }
 
         public WorldIndexEntry AddPlayerCharacter(PlayerCharacter entity)
@@ -55,6 +72,8 @@ namespace WorldBuilder.Services
             entry.DataType = "PlayerCharacter";
             entry.DataTypeID = entity.PCID;
 
+            db.WorldIndex.Add(entry);
+            db.SaveChanges();
             return entry;
         }
 
@@ -67,6 +86,8 @@ namespace WorldBuilder.Services
             entry.DataType = "Item";
             entry.DataTypeID = entity.ItemID;
 
+            db.WorldIndex.Add(entry);
+            db.SaveChanges();
             return entry;
         }
 
@@ -79,6 +100,8 @@ namespace WorldBuilder.Services
             entry.DataType = "Spell";
             entry.DataTypeID = entity.SpellID;
 
+            db.WorldIndex.Add(entry);
+            db.SaveChanges();
             return entry;
         }
 
@@ -91,6 +114,8 @@ namespace WorldBuilder.Services
             entry.DataType = "Feature";
             entry.DataTypeID = entity.FeatureID;
 
+            db.WorldIndex.Add(entry);
+            db.SaveChanges();
             return entry;
         }
 
