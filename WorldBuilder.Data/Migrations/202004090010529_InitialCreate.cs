@@ -18,8 +18,11 @@
                         Mechanics = c.String(),
                         Source = c.String(),
                         Notes = c.String(),
+                        PlayerCharacter_PCID = c.Int(),
                     })
-                .PrimaryKey(t => t.FeatureID);
+                .PrimaryKey(t => t.FeatureID)
+                .ForeignKey("dbo.PlayerCharacters", t => t.PlayerCharacter_PCID)
+                .Index(t => t.PlayerCharacter_PCID);
             
             CreateTable(
                 "dbo.Items",
@@ -34,8 +37,11 @@
                         Mechanics = c.String(),
                         Notes = c.String(),
                         Source = c.String(),
+                        PlayerCharacter_PCID = c.Int(),
                     })
-                .PrimaryKey(t => t.ItemID);
+                .PrimaryKey(t => t.ItemID)
+                .ForeignKey("dbo.PlayerCharacters", t => t.PlayerCharacter_PCID)
+                .Index(t => t.PlayerCharacter_PCID);
             
             CreateTable(
                 "dbo.PCtoFeatureBindings",
@@ -56,7 +62,7 @@
                 c => new
                     {
                         PCID = c.Int(nullable: false, identity: true),
-                        NameShort = c.String(nullable: false),
+                        Name = c.String(nullable: false),
                         NameFull = c.String(),
                         Level = c.String(),
                         Class = c.String(),
@@ -64,55 +70,41 @@
                         Background = c.String(),
                         PersonalHistory = c.String(),
                         Personality = c.String(),
-                        Age = c.Int(nullable: false),
-                        CurHP = c.Int(nullable: false),
-                        CurHD = c.Int(nullable: false),
-                        MaxHP = c.Int(nullable: false),
+                        Age = c.String(),
+                        CurHP = c.String(),
+                        CurHD = c.String(),
+                        MaxHP = c.String(),
                         HitDice = c.String(),
-                        ProficiencyBonus = c.Int(nullable: false),
-                        STR = c.Int(nullable: false),
-                        DEX = c.Int(nullable: false),
-                        CON = c.Int(nullable: false),
-                        INT = c.Int(nullable: false),
-                        WIS = c.Int(nullable: false),
-                        CHA = c.Int(nullable: false),
-                        Athletics = c.Int(nullable: false),
-                        Acrobatics = c.Int(nullable: false),
-                        SleightofHand = c.Int(nullable: false),
-                        Stealth = c.Int(nullable: false),
-                        Arcana = c.Int(nullable: false),
-                        History = c.Int(nullable: false),
-                        Investigation = c.Int(nullable: false),
-                        Nature = c.Int(nullable: false),
-                        Religion = c.Int(nullable: false),
-                        AnimalHandling = c.Int(nullable: false),
-                        Insight = c.Int(nullable: false),
-                        Medicine = c.Int(nullable: false),
-                        Perception = c.Int(nullable: false),
-                        Survival = c.Int(nullable: false),
-                        Deception = c.Int(nullable: false),
-                        Intimidation = c.Int(nullable: false),
-                        Performance = c.Int(nullable: false),
-                        Persuasion = c.Int(nullable: false),
+                        ProficiencyBonus = c.String(),
+                        STR = c.String(),
+                        DEX = c.String(),
+                        CON = c.String(),
+                        INT = c.String(),
+                        WIS = c.String(),
+                        CHA = c.String(),
+                        Athletics = c.String(),
+                        Acrobatics = c.String(),
+                        SleightofHand = c.String(),
+                        Stealth = c.String(),
+                        Arcana = c.String(),
+                        History = c.String(),
+                        Investigation = c.String(),
+                        Nature = c.String(),
+                        Religion = c.String(),
+                        AnimalHandling = c.String(),
+                        Insight = c.String(),
+                        Medicine = c.String(),
+                        Perception = c.String(),
+                        Survival = c.String(),
+                        Deception = c.String(),
+                        Intimidation = c.String(),
+                        Performance = c.String(),
+                        Persuasion = c.String(),
                         Player = c.String(),
                         Notes = c.String(),
                         OwnerID = c.String(),
                     })
                 .PrimaryKey(t => t.PCID);
-            
-            CreateTable(
-                "dbo.PCtoSpellBindings",
-                c => new
-                    {
-                        PCtoSPBindID = c.Int(nullable: false, identity: true),
-                        PCID = c.Int(nullable: false),
-                        SpellID = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.PCtoSPBindID)
-                .ForeignKey("dbo.PlayerCharacters", t => t.PCID, cascadeDelete: true)
-                .ForeignKey("dbo.Spells", t => t.SpellID, cascadeDelete: true)
-                .Index(t => t.PCID)
-                .Index(t => t.SpellID);
             
             CreateTable(
                 "dbo.Spells",
@@ -135,8 +127,39 @@
                         FullText = c.String(),
                         Mechanics = c.String(),
                         Notes = c.String(),
+                        PlayerCharacter_PCID = c.Int(),
                     })
-                .PrimaryKey(t => t.SpellID);
+                .PrimaryKey(t => t.SpellID)
+                .ForeignKey("dbo.PlayerCharacters", t => t.PlayerCharacter_PCID)
+                .Index(t => t.PlayerCharacter_PCID);
+            
+            CreateTable(
+                "dbo.PCtoItemBindings",
+                c => new
+                    {
+                        PCtoFEBindID = c.Int(nullable: false, identity: true),
+                        PCID = c.Int(nullable: false),
+                        ItemID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.PCtoFEBindID)
+                .ForeignKey("dbo.Items", t => t.ItemID, cascadeDelete: true)
+                .ForeignKey("dbo.PlayerCharacters", t => t.PCID, cascadeDelete: true)
+                .Index(t => t.PCID)
+                .Index(t => t.ItemID);
+            
+            CreateTable(
+                "dbo.PCtoSpellBindings",
+                c => new
+                    {
+                        PCtoSPBindID = c.Int(nullable: false, identity: true),
+                        PCID = c.Int(nullable: false),
+                        SpellID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.PCtoSPBindID)
+                .ForeignKey("dbo.PlayerCharacters", t => t.PCID, cascadeDelete: true)
+                .ForeignKey("dbo.Spells", t => t.SpellID, cascadeDelete: true)
+                .Index(t => t.PCID)
+                .Index(t => t.SpellID);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -206,6 +229,19 @@
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.WorldIndexEntries",
+                c => new
+                    {
+                        IndexID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        HashCode = c.Int(nullable: false),
+                        DataType = c.String(),
+                        DataTypeID = c.Int(nullable: false),
+                        AssocID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.IndexID);
+            
         }
         
         public override void Down()
@@ -216,7 +252,12 @@
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.PCtoSpellBindings", "SpellID", "dbo.Spells");
             DropForeignKey("dbo.PCtoSpellBindings", "PCID", "dbo.PlayerCharacters");
+            DropForeignKey("dbo.PCtoItemBindings", "PCID", "dbo.PlayerCharacters");
+            DropForeignKey("dbo.PCtoItemBindings", "ItemID", "dbo.Items");
             DropForeignKey("dbo.PCtoFeatureBindings", "PCID", "dbo.PlayerCharacters");
+            DropForeignKey("dbo.Spells", "PlayerCharacter_PCID", "dbo.PlayerCharacters");
+            DropForeignKey("dbo.Items", "PlayerCharacter_PCID", "dbo.PlayerCharacters");
+            DropForeignKey("dbo.Features", "PlayerCharacter_PCID", "dbo.PlayerCharacters");
             DropForeignKey("dbo.PCtoFeatureBindings", "FeatureID", "dbo.Features");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -226,15 +267,22 @@
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.PCtoSpellBindings", new[] { "SpellID" });
             DropIndex("dbo.PCtoSpellBindings", new[] { "PCID" });
+            DropIndex("dbo.PCtoItemBindings", new[] { "ItemID" });
+            DropIndex("dbo.PCtoItemBindings", new[] { "PCID" });
+            DropIndex("dbo.Spells", new[] { "PlayerCharacter_PCID" });
             DropIndex("dbo.PCtoFeatureBindings", new[] { "FeatureID" });
             DropIndex("dbo.PCtoFeatureBindings", new[] { "PCID" });
+            DropIndex("dbo.Items", new[] { "PlayerCharacter_PCID" });
+            DropIndex("dbo.Features", new[] { "PlayerCharacter_PCID" });
+            DropTable("dbo.WorldIndexEntries");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Spells");
             DropTable("dbo.PCtoSpellBindings");
+            DropTable("dbo.PCtoItemBindings");
+            DropTable("dbo.Spells");
             DropTable("dbo.PlayerCharacters");
             DropTable("dbo.PCtoFeatureBindings");
             DropTable("dbo.Items");

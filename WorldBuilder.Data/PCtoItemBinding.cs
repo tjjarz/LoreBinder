@@ -11,7 +11,7 @@ namespace WorldBuilder.Data
     public class PCtoItemBinding
     {
         [Key]
-        public int PCtoFEBindID { get; set; }
+        public int PCtoITBindID { get; set; }
 
         [ForeignKey(nameof(PC))]
         public int PCID { get; set; }

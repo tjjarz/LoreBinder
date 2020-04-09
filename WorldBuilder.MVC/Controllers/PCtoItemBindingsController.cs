@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,131 +7,119 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldBuilder.Data;
-using WorldBuilder.Services;
 
 namespace WorldBuilder.MVC.Controllers
 {
-    public class ItemsController : Controller
+    public class PCtoItemBindingsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        private WorldIndexService CreateWorldIndexService()
+        // GET: PCtoItemBindings
+        public ActionResult Index()
         {
-            //shouldn't this be a Guid?
-            string userID = User.Identity.GetUserId();
-            var worldIndexService = new WorldIndexService(userID);
-
-            return worldIndexService;
+            var pCItems = db.PCItems.Include(p => p.Item).Include(p => p.PC);
+            return View(pCItems.ToList());
         }
 
-        public ActionResult Index(string searchString)
-        {
-            var items = from i in db.Items select i;
-
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                items = items.Where(s => s.Name.Contains(searchString));
-            }
-
-            return View(items);
-        }
-
-        // GET: Items/Details/5
+        // GET: PCtoItemBindings/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = db.Items.Find(id);
-            if (item == null)
+            PCtoItemBinding pCtoItemBinding = db.PCItems.Find(id);
+            if (pCtoItemBinding == null)
             {
                 return HttpNotFound();
             }
-            return View(item);
+            return View(pCtoItemBinding);
         }
 
-        // GET: Items/Create
+        // GET: PCtoItemBindings/Create
         public ActionResult Create()
         {
+            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name");
+            ViewBag.PCID = new SelectList(db.PlayerCharacters, "PCID", "Name");
             return View();
         }
 
-        // POST: Items/Create
+        // POST: PCtoItemBindings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemID,Name,Type,Rarity,Summary,FullText,Mechanics,Notes,Source")] Item item)
+        public ActionResult Create([Bind(Include = "PCtoFEBindID,PCID,ItemID")] PCtoItemBinding pCtoItemBinding)
         {
             if (ModelState.IsValid)
             {
-                db.Items.Add(item);
+                db.PCItems.Add(pCtoItemBinding);
                 db.SaveChanges();
-                
-                WorldIndexService worldIndexService = CreateWorldIndexService();
-                worldIndexService.UpdateItems();
-                
                 return RedirectToAction("Index");
             }
 
-            return View(item);
+            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name", pCtoItemBinding.ItemID);
+            ViewBag.PCID = new SelectList(db.PlayerCharacters, "PCID", "Name", pCtoItemBinding.PCID);
+            return View(pCtoItemBinding);
         }
 
-        // GET: Items/Edit/5
+        // GET: PCtoItemBindings/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = db.Items.Find(id);
-            if (item == null)
+            PCtoItemBinding pCtoItemBinding = db.PCItems.Find(id);
+            if (pCtoItemBinding == null)
             {
                 return HttpNotFound();
             }
-            return View(item);
+            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name", pCtoItemBinding.ItemID);
+            ViewBag.PCID = new SelectList(db.PlayerCharacters, "PCID", "Name", pCtoItemBinding.PCID);
+            return View(pCtoItemBinding);
         }
 
-        // POST: Items/Edit/5
+        // POST: PCtoItemBindings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Item item)
+        public ActionResult Edit([Bind(Include = "PCtoFEBindID,PCID,ItemID")] PCtoItemBinding pCtoItemBinding)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(item).State = EntityState.Modified;
+                db.Entry(pCtoItemBinding).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(item);
+            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name", pCtoItemBinding.ItemID);
+            ViewBag.PCID = new SelectList(db.PlayerCharacters, "PCID", "Name", pCtoItemBinding.PCID);
+            return View(pCtoItemBinding);
         }
 
-        // GET: Items/Delete/5
+        // GET: PCtoItemBindings/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = db.Items.Find(id);
-            if (item == null)
+            PCtoItemBinding pCtoItemBinding = db.PCItems.Find(id);
+            if (pCtoItemBinding == null)
             {
                 return HttpNotFound();
             }
-            return View(item);
+            return View(pCtoItemBinding);
         }
 
-        // POST: Items/Delete/5
+        // POST: PCtoItemBindings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Item item = db.Items.Find(id);
-            db.Items.Remove(item);
+            PCtoItemBinding pCtoItemBinding = db.PCItems.Find(id);
+            db.PCItems.Remove(pCtoItemBinding);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

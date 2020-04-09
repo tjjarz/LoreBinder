@@ -75,11 +75,11 @@ namespace WorldBuilder.MVC.Controllers
             {
                 PlayerCharacterService characterService = CreatePlayerChararacterService();
                 db.PlayerCharacters.Add(characterService.BuildPlayerCharacter(playerCharacter));
-                WorldIndexService worldIndexService = CreateWorldIndexService();
-                //db.PlayerCharacters.Create(playerCharacter);
-                //WorldIndexEntry entry = worldIndexService.AddPlayerCharacter(db.PlayerCharacters.Count()+1); 
-                //db.WorldIndex.Add(entry);
                 db.SaveChanges();
+                
+                WorldIndexService worldIndexService = CreateWorldIndexService();
+                worldIndexService.UpdatePlayerCharacters();
+                
                 return RedirectToAction("Index");
             }   
 
@@ -98,6 +98,9 @@ namespace WorldBuilder.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Items = new SelectList(db.Items, "ItemID", "Name", "Summary");
+            //ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name", pCtoItemBinding.ItemID);
+
             return View(playerCharacter);
         }
 
@@ -106,7 +109,7 @@ namespace WorldBuilder.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PCID,NameShort,NameFull,Level,Class,Species,Age,Background,PersonalHistory,Personality,CurHP,CurHD,MaxHP,HitDice,ProficiencyBonus,STR,DEX,CON,INT,WIS,CHA,Athletics,Acrobatics,SleightofHand,Stealth,Arcana,History,Investigation,Nature,Religion,AnimalHandling,Insight,Medicine,Perception,Survival,Deception,Intimidation,Performance,Persuasion,Player")] PlayerCharacter playerCharacter)
+        public ActionResult Edit(PlayerCharacter playerCharacter)
         {
             if (ModelState.IsValid)
             {

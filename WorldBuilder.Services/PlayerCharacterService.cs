@@ -65,5 +65,23 @@ namespace WorldBuilder.Services
             //return _db.SaveChanges() == 1;
             return entity;
         }
+
+        public PCListVariant GetPCListVariant(PlayerCharacter playerChar)
+        {
+            PCListVariant listPC = new PCListVariant
+            {
+                PCID = playerChar.PCID,
+                Name = playerChar.Name,
+                Summary = playerChar.Summary,
+                Level = playerChar.Level,
+                Species = playerChar.Species,
+                Class = playerChar.Class,
+                OwnerID = playerChar.OwnerID
+
+            };
+
+            return listPC;
+
+        }
     }
 }

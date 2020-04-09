@@ -7,13 +7,13 @@ namespace WorldBuilder.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class AddStuff : IMigrationMetadata
+    public sealed partial class fixedminorinconvinience : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddStuff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixedminorinconvinience));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004070335580_AddStuff"; }
+            get { return "202004090552415_fixed minor inconvinience"; }
         }
         
         string IMigrationMetadata.Source

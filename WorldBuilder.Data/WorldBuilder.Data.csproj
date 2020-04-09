@@ -61,17 +61,17 @@
     <Compile Include="Feature.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Migrations\202004070224567_InitialCreate.cs" />
-    <Compile Include="Migrations\202004070224567_InitialCreate.designer.cs">
-      <DependentUpon>202004070224567_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202004090010529_InitialCreate.cs" />
+    <Compile Include="Migrations\202004090010529_InitialCreate.designer.cs">
+      <DependentUpon>202004090010529_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004070335580_AddStuff.cs" />
-    <Compile Include="Migrations\202004070335580_AddStuff.designer.cs">
-      <DependentUpon>202004070335580_AddStuff.cs</DependentUpon>
+    <Compile Include="Migrations\202004090319192_player view folder rename.cs" />
+    <Compile Include="Migrations\202004090319192_player view folder rename.designer.cs">
+      <DependentUpon>202004090319192_player view folder rename.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004072141492_Addindexhopefully.cs" />
-    <Compile Include="Migrations\202004072141492_Addindexhopefully.designer.cs">
-      <DependentUpon>202004072141492_Addindexhopefully.cs</DependentUpon>
+    <Compile Include="Migrations\202004090552415_fixed minor inconvinience.cs" />
+    <Compile Include="Migrations\202004090552415_fixed minor inconvinience.designer.cs">
+      <DependentUpon>202004090552415_fixed minor inconvinience.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PCtoFeatureBinding.cs" />
@@ -92,20 +92,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WorldBuilder.Model\WorldBuilder.Models.csproj">
-      <Project>{D5464D65-F3FD-4599-8898-68774074F2F1}</Project>
-      <Name>WorldBuilder.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004070224567_InitialCreate.resx">
-      <DependentUpon>202004070224567_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004090010529_InitialCreate.resx">
+      <DependentUpon>202004090010529_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004070335580_AddStuff.resx">
-      <DependentUpon>202004070335580_AddStuff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004090319192_player view folder rename.resx">
+      <DependentUpon>202004090319192_player view folder rename.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004072141492_Addindexhopefully.resx">
-      <DependentUpon>202004072141492_Addindexhopefully.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004090552415_fixed minor inconvinience.resx">
+      <DependentUpon>202004090552415_fixed minor inconvinience.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

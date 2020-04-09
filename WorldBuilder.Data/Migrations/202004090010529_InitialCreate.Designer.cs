@@ -7,13 +7,13 @@ namespace WorldBuilder.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class Addindexhopefully : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Addindexhopefully));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004072141492_Addindexhopefully"; }
+            get { return "202004090010529_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

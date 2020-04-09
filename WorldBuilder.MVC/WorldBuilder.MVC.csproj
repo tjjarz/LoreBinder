@@ -174,10 +174,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FeatureBindingController.cs" />
     <Compile Include="Controllers\FeaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PCtoItemBindingsController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\SpellsController.cs" />
     <Compile Include="Controllers\WorldController.cs" />
@@ -371,6 +373,14 @@
     <Content Include="Views\Spells\Details.cshtml" />
     <Content Include="Views\Spells\Edit.cshtml" />
     <Content Include="Views\Spells\Index.cshtml" />
+    <Content Include="Views\FeatureBinding\Create.cshtml" />
+    <Content Include="Views\PCtoItemBindings\Create.cshtml" />
+    <Content Include="Views\PCtoItemBindings\Delete.cshtml" />
+    <Content Include="Views\PCtoItemBindings\Details.cshtml" />
+    <Content Include="Views\PCtoItemBindings\Edit.cshtml" />
+    <Content Include="Views\PCtoItemBindings\Index.cshtml" />
+    <Content Include="Views\Shared\Curtain.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

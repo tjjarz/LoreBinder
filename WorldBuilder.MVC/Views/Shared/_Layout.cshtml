@@ -19,8 +19,10 @@
                 <ul class="nav navbar-nav mr-auto">
                     @*<button><a href="/World">World</a></button>*@
                     <li>@Html.ActionLink("World", "Index", "World")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Characters", "Index", "Player")</li>
+                    <li>@Html.ActionLink("Character Builder", "Index", "Player")</li>
+                    <li>@Html.ActionLink("Items", "Index", "Items")</li>
+                    <li>@Html.ActionLink("Features", "Index", "Features")</li>
+                    <li>@Html.ActionLink("Spells", "Index", "Spells")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

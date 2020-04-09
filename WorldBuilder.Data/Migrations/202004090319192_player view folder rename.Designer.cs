@@ -7,13 +7,13 @@ namespace WorldBuilder.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class playerviewfolderrename : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(playerviewfolderrename));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004070224567_InitialCreate"; }
+            get { return "202004090319192_player view folder rename"; }
         }
         
         string IMigrationMetadata.Source

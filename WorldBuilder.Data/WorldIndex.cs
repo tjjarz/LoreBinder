@@ -22,14 +22,8 @@ namespace WorldBuilder.Data
         public int HashCode { get; set; }
         public string DataType { get; set; }
         public int DataTypeID { get; set; }
+        public int AssocID { get; set; }
         //public string Maker { get; set; } //should be guid SOMEDAY
-
-        
-
-
-
-
-
     }
 
 
@@ -42,7 +36,7 @@ namespace WorldBuilder.Data
         public int HashCode { get; set; }
         public string DataType { get; set; }
         public int DataTypeID { get; set; }
+        public int AssocID { get; set; }
         //public string Maker { get; set; }
-
     }
 }

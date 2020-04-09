@@ -61,12 +61,12 @@ namespace WorldBuilder.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                WorldIndexService worldIndexService = CreateWorldIndexService();
                 db.Spells.Add(spell);
                 db.SaveChanges();
-                WorldIndexEntry entry = worldIndexService.AddSpell(db.Spells.Find(db.Spells.Count()+1));
-                db.WorldIndex.Add(entry);
-                db.SaveChanges();
+                
+                WorldIndexService worldIndexService = CreateWorldIndexService();
+                worldIndexService.UpdateSpells();
+                
                 return RedirectToAction("Index");
             }
 

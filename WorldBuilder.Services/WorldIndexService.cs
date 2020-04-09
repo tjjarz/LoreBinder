@@ -47,30 +47,75 @@ namespace WorldBuilder.Services
         }
 
         public void UpdateItems()
-        //public void UpdateItems(Item item)
         {
-            var items = from i in db.Items select i;
-            var indicies = from entry in db.WorldIndex select entry;
-            var itemEntries = indicies.Where(x => x.DataType == "Item").Select(x=>x.DataTypeID);
-            
+            var items = db.Items.ToList();
+
             foreach (Item item in items)
             {
-                //if (!itemEntries.Any().Equals(item.ItemID))
-                if (!itemEntries.Contains(item.ItemID));
+                if (!(from entries in db.WorldIndex
+                    where entries.DataType == "Item" && entries.DataTypeID == item.ItemID
+                    select item.ItemID).Any())
                 {
                     AddItem(item);
                 }
             }
         }
 
+        public void UpdateSpells()
+        {
+            var spells = db.Spells.ToList();
+
+            foreach (Spell spell in spells)
+            {
+                if (!(from entries in db.WorldIndex
+                      where entries.DataType == "Spell" && entries.DataTypeID == spell.SpellID
+                      select spell.SpellID).Any())
+                {
+                    AddSpell(spell);
+                }
+            }
+        }
+
+        public void UpdateFeatures()
+        {
+            var features = db.Features.ToList();
+
+            foreach (Feature feature in features)
+            {
+                if (!(from entries in db.WorldIndex
+                      where entries.DataType == "Feature" && entries.DataTypeID == feature.FeatureID
+                      select feature.FeatureID).Any())
+                {
+                    AddFeature(feature);
+                }
+            }
+        }
+
+        public void UpdatePlayerCharacters()
+        {
+            var playercharacters = db.PlayerCharacters.ToList();
+
+            foreach (PlayerCharacter playercharacter in playercharacters)
+            {
+                if (!(from entries in db.WorldIndex
+                      where entries.DataType == "PlayerCharacter" && entries.DataTypeID == playercharacter.PCID
+                      select playercharacter.PCID).Any())
+                {
+                    AddPlayerCharacter(playercharacter);
+                }
+            }
+        }
+
         public WorldIndexEntry AddPlayerCharacter(PlayerCharacter entity)
         {
-            WorldIndexEntry entry = new WorldIndexEntry();
-
-            entry.Name = entity.Name;
-            entry.HashCode = entity.Name.GetHashCode();
-            entry.DataType = "PlayerCharacter";
-            entry.DataTypeID = entity.PCID;
+            WorldIndexEntry entry = new WorldIndexEntry
+            {
+                Name = entity.Name,
+                HashCode = entity.Name.GetHashCode(),
+                DataType = "PlayerCharacter",
+                DataTypeID = entity.PCID,
+                AssocID = ("PC" + entity.PCID.ToString()).GetHashCode()
+            };
 
             db.WorldIndex.Add(entry);
             db.SaveChanges();
@@ -79,12 +124,14 @@ namespace WorldBuilder.Services
 
         public WorldIndexEntry AddItem(Item entity)
         {
-            WorldIndexEntry entry = new WorldIndexEntry();
-
-            entry.Name = entity.Name;
-            entry.HashCode = entity.Name.GetHashCode();
-            entry.DataType = "Item";
-            entry.DataTypeID = entity.ItemID;
+            WorldIndexEntry entry = new WorldIndexEntry
+            {
+                Name = entity.Name,
+                HashCode = entity.Name.GetHashCode(),
+                DataType = "Item",
+                DataTypeID = entity.ItemID,
+                AssocID = ("IT" + entity.ItemID.ToString()).GetHashCode()
+            };
 
             db.WorldIndex.Add(entry);
             db.SaveChanges();
@@ -93,12 +140,14 @@ namespace WorldBuilder.Services
 
         public WorldIndexEntry AddSpell(Spell entity)
         {
-            WorldIndexEntry entry = new WorldIndexEntry();
-
-            entry.Name = entity.Name;
-            entry.HashCode = entity.Name.GetHashCode();
-            entry.DataType = "Spell";
-            entry.DataTypeID = entity.SpellID;
+            WorldIndexEntry entry = new WorldIndexEntry
+            {
+                Name = entity.Name,
+                HashCode = entity.Name.GetHashCode(),
+                DataType = "Spell",
+                DataTypeID = entity.SpellID,
+                AssocID = ("SP" + entity.SpellID.ToString()).GetHashCode()
+            };
 
             db.WorldIndex.Add(entry);
             db.SaveChanges();
@@ -107,12 +156,14 @@ namespace WorldBuilder.Services
 
         public WorldIndexEntry AddFeature(Feature entity)
         {
-            WorldIndexEntry entry = new WorldIndexEntry();
-
-            entry.Name = entity.Name;
-            entry.HashCode = entity.Name.GetHashCode();
-            entry.DataType = "Feature";
-            entry.DataTypeID = entity.FeatureID;
+            WorldIndexEntry entry = new WorldIndexEntry
+            {
+                Name = entity.Name,
+                HashCode = entity.Name.GetHashCode(),
+                DataType = "Feature",
+                DataTypeID = entity.FeatureID,
+                AssocID = ("FE" + entity.FeatureID.ToString()).GetHashCode()
+            };
 
             db.WorldIndex.Add(entry);
             db.SaveChanges();

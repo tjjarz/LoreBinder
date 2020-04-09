@@ -53,11 +53,18 @@
   <ItemGroup>
     <Compile Include="CharacterBuilderModels.cs" />
     <Compile Include="ElementModels.cs" />
+    <Compile Include="FeatureModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WorldBuilder.Data\WorldBuilder.Data.csproj">
+      <Project>{9d3a80c1-03fe-457c-9849-d44ef4c708eb}</Project>
+      <Name>WorldBuilder.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

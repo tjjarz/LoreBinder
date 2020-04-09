@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using WorldBuilder.Models;
+//using WorldBuilder.Models;
 
 namespace WorldBuilder.Data
 {
@@ -9,10 +9,9 @@ namespace WorldBuilder.Data
     {
         [Key]
         public int PCID { get; set; }
-        //public string BindID { get { return "PC" + PCID; } }
         [Required]        
         public string Name { get; set; }
-        //public string Summary {get;set;} //belongs in a museum IE abstract parent class
+        public string Summary {get;set;} //belongs in a museum IE abstract parent class
         public string NameFull { get; set; }
         public string Level { get; set; } //string not int because no math also "2nd" level... etc
         public string Class { get; set; }
@@ -21,18 +20,18 @@ namespace WorldBuilder.Data
         public string Background { get; set; } //eventually link it 
         public string PersonalHistory { get; set; } //EVERYTHING
         public string Personality { get; set; } //traits, ideals, flaws and bonds
-        public int Age { get; set; }
-        public int CurHP { get; set; }  //setting up for "live" charsheet future
-        public int CurHD { get; set; }  //setting up for "live" charsheet future
-        public int MaxHP { get; set; }
+        public string Age { get; set; }
+        public string CurHP { get; set; }  //setting up for "live" charsheet future
+        public string CurHD { get; set; }  //setting up for "live" charsheet future
+        public string MaxHP { get; set; }
         public string HitDice { get; set; } //perhaps should be another parsed "math" item?
-        public int ProficiencyBonus { get; set; }
-        public int STR { get; set; }
-        public int DEX { get; set; }
-        public int CON { get; set; }
-        public int INT { get; set; }
-        public int WIS { get; set; }
-        public int CHA { get; set; }
+        public string ProficiencyBonus { get; set; }
+        public string STR { get; set; }
+        public string DEX { get; set; }
+        public string CON { get; set; }
+        public string INT { get; set; }
+        public string WIS { get; set; }
+        public string CHA { get; set; }
         /*public int STRsave { get; set; }  //probably gonna need to add these eventually (ugh)
         public int DEXsave { get; set; }
         public int CONsave { get; set; }
@@ -40,31 +39,38 @@ namespace WorldBuilder.Data
         public int WISsave { get; set; }
         public int CHAsave { get; set; }*/
         //public string Skills { get; set; }
-            public int Athletics { get; set; } //need to track skill bonuses too if i'm gonna go full programatic
-            public int Acrobatics { get; set; }
-            public int SleightofHand { get; set; }
-            public int Stealth { get; set; }
-            public int Arcana { get; set; }
-            public int History { get; set; }
-            public int Investigation { get; set; }
-            public int Nature { get; set; }
-            public int Religion { get; set; }
-            public int AnimalHandling { get; set; }
-            public int Insight { get; set; }
-            public int Medicine { get; set; }
-            public int Perception { get; set; }
-            public int Survival { get; set; }
-            public int Deception { get; set; }
-            public int Intimidation { get; set; }
-            public int Performance { get; set; }
-            public int Persuasion { get; set; }
+            public string Athletics { get; set; } //need to track skill bonuses too if i'm gonna go full programatic
+            public string Acrobatics { get; set; }
+            public string SleightofHand { get; set; }
+            public string Stealth { get; set; }
+            public string Arcana { get; set; }
+            public string History { get; set; }
+            public string Investigation { get; set; }
+            public string Nature { get; set; }
+            public string Religion { get; set; }
+            public string AnimalHandling { get; set; }
+            public string Insight { get; set; }
+            public string Medicine { get; set; }
+            public string Perception { get; set; }
+            public string Survival { get; set; }
+            public string Deception { get; set; }
+            public string Intimidation { get; set; }
+            public string Performance { get; set; }
+            public string Persuasion { get; set; }
         public string Player { get; set; }
         public string Notes { get; set; }
         public string OwnerID { get; set; } 
         public virtual List<Feature> Features { get; set; }
         public virtual List<Item> Items { get; set; }
         public virtual List<Spell> Spells { get; set; }
+        //public int AssocID => ("PC" + PCID.ToString()).GetHashCode();
+
         //public List<StatusEffect> Conditions { get; set; }  //left out for future live play feature & my sanity
+
+        public PlayerCharacter()
+        {
+
+        }
 
         /*
         public PlayerCharacter(CharacterBuild characterbuild)

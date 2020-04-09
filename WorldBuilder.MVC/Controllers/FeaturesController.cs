@@ -62,12 +62,11 @@ namespace WorldBuilder.MVC.Controllers
             if (ModelState.IsValid)
             {
                 db.Features.Add(feature);
-                WorldIndexService worldIndexService = CreateWorldIndexService();
                 db.SaveChanges();
 
-                WorldIndexEntry entry = worldIndexService.AddFeature(db.Features.Find(db.Features.Count() + 1));
-                db.WorldIndex.Add(entry);
-                db.SaveChanges();
+                WorldIndexService worldIndexService = CreateWorldIndexService();
+                worldIndexService.UpdateFeatures();
+                
                 return RedirectToAction("Index");
             }
 
