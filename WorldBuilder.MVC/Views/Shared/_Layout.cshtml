@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Expletus+Sans:ital,wght@0,400;0,600;1,600&family=Merriweather&family=Nova+Cut&display=swap" rel="stylesheet">
 
 </head>
 <body style="background-color: #7d7d7d">
@@ -29,7 +30,10 @@
         </div>
     </nav>
 
+
     <div class="container body-content" style="background-color: #c4c4c4">
+        <br />
+        <br />
         @RenderBody()
         <hr />
         <footer>
@@ -45,8 +49,21 @@
 </html>
 
 <style>
+    /*
+        font selector!
+    font-family: 'Expletus Sans', cursive;
+    font-family: 'Nova Cut', cursive;
+    font-family: 'Merriweather', serif;
+    font-family: 'Cinzel Decorative', cursive;
+
+    */
+
+
+
     nav {
         background-color: #7e5096;
+        box-shadow: 0px 0px 6px 2px #505050;
+        margin-bottom: -10px;
     }
 
     .navbar-nav > li {
@@ -66,7 +83,8 @@
         background-color: #7e5096;
         color: #FFFFFF;
     }
-    .btn{
+
+    .btn {
         background-color: #c4c4c4;
         color: black;
         border: 3px solid #6e6e6e;
@@ -82,31 +100,55 @@
     }
 
     .snazy-box {
-        border: 5px solid #6e6e6e;
         border-radius: 20px 20px 20px 20px;
+        border: 5px solid #8a8a8a;
         margin: 3px;
         background-color: #ffffff;
+        box-shadow: 3px 3px 6px 3px #505050;
+        overflow: hidden;
+    }
+
+    .less-snazy-box {
+        /*border-radius: 20px 20px 20px 20px;*/
+        border-bottom: 6px solid #8a8e8e;
+        /*background-color: #8a8e8e;*/
+        /*box-shadow: 3px 3px 6px 2px #505050;*/
+    }
+
+    .field-name {
+        /*background-color: #8e8e8e;*/
+        background-color: #000000;
+        /*font-weight: 700;*/
+        color: #ffffff;
+        width: 100px !important;
+        z-index: 1;
+        /*border-radius: 20px 0 0 20px;*/
+        border-radius: 0 0 0 0;
+        padding: 0px;
+        /*box-shadow: -3px 0px 3px #505050 inset;*/
     }
 
     .snazy-box-small-inline {
-        border: 5px solid #6e6e6e;
+        /*border: 5px solid #6e6e6e;*/
         border-radius: 20px 20px 20px 20px;
         margin: 3px;
         background-color: #ffffff;
         min-width: 290px;
+        box-shadow: 1px 1px 8px 2px #505050;
     }
 
     .snazy-box-section {
-        border: 5px solid #6e6e6e;
+        /*border: 5px solid #6e6e6e;*/
         border-radius: 20px 20px 20px 20px;
         margin: 3px;
         padding: 5px;
         padding-bottom: 0px;
         background-color: #aeaeae;
+        box-shadow: 3px 3px 8px #000000;
     }
 
     .form-control:disabled {
-        background-color: #8a8e8e;
+        background-color: #aeaeae;
         font-weight: 700;
         color: #ffffff;
         width: 200px;
@@ -114,7 +156,6 @@
     }
 
     .form-inline .form-control {
-        
         /*width: unset;*/
     }
 
@@ -122,27 +163,19 @@
         position: relative;
         max-width: 100%;
         width: 80%;
-        display:inline !important;
+        display: inline !important;
     }
 
     .form-group {
-        margin-bottom: .5rem;
-        margin-left: .5rem;
+        /*margin-bottom: .5rem;*/
+        /*margin-left: .5rem;*/
+        margin: 0;
     }
 
-    .field-name {
-        /*background-color: #8e8e8e;*/
-        background-color: #000000;
-        font-weight: 700;
-        color: #ffffff;
-        width: 180px !important;
-        z-index: 1;
-        border-radius: 15px 0 0 15px;
-    }
 
-        .field-name:hover {
-            background-color: #7e5096;
-        }
+    .field-name:hover {
+        background-color: #7e5096;
+    }
 
     .field-name-check {
         /*background-color: #8e8e8e;*/
@@ -151,35 +184,67 @@
         color: #ffffff;
         width: 100px !important;
         z-index: 1;
-        border-radius: 15px 15px 0 0;
+        border-radius: 20px 20px 0 0;
     }
 
     .field-value {
-        width: 250px !important;
+        width: 240px !important;
         /*margin-top: 15px;*/
-        border-radius: 0 15px 15px 0;
+        /*border-radius: 0 20px 20px 0;*/
+        outline: none;
+        overflow: hidden;
+        border: none;
         /*margin-left: -5px;*/
+    }
+
+    .my-card-item {
+        max-width: 300px;
+        /*border-radius: 20px 20px 20px 20px;*/
+        max-height: 260px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        /*z-index: -1;*/
+    }
+
+    .my-card-tl {
+    }
+
+    .my-card-tr {
+    }
+
+    .my-card-br {
+    }
+
+    .my-card-bl {
     }
 
     .field-value-short {
         width: 150px !important;
         /*margin-top: 15px;*/
-        border-radius: 0 15px 15px 0;
+        border-radius: 0 20px 20px 0;
+        outline: none;
+        overflow: hidden;
+        border: none;
         /*margin-left: -5px;*/
     }
 
     .field-value-check {
         width: 40px !important;
         /*margin-top: 15px;*/
-        border-radius: 0 15px 15px 0;
+        border-radius: 0 20px 20px 0;
         margin-left: 30px;
+        overflow: hidden;
+        border: none;
     }
 
     .field-value-num {
-        width: 100px !important;
+        width: 110px !important;
         /*margin-top: 15px;*/
-        border-radius: 0 15px 15px 0;
+        border-radius: 0 20px 20px 0;
         /*margin-left: -5px;*/
+        outline: none;
+        overflow: hidden;
+        border: none;
     }
 
     input {
@@ -191,40 +256,140 @@
         background-color: #000000;
         font-weight: 700;
         color: #ffffff;
-        width: 180px !important;
+        width: 100px !important;
         z-index: 1;
-        border-radius: 15px 0 15px 0;
+        border-radius: 0 0 20px 0;
         position: absolute;
         top: auto;
+        padding: 0px;
+        /*box-shadow: 1px 1px 8px 2px #505050;*/
     }
 
-    textarea {
+    /*textarea {
         overflow: hidden;
-        min-width: 400px;
+        min-width: 335px;
+        max-width: 335px;
         min-height: 100px;
         margin-top: 35px;
         margin-left: 5px;
         margin-right: 5px;
         resize: both;
         border: none;
-        border-radius: 15px 15px 15px 15px;
+        border-radius: 20px 20px 20px 20px;
         outline: none;
-    }
+    }*/
+
     .card-title {
         width: 100%;
-        text-align:center;
+        text-align: center;
         object-position: center;
         padding-left: 10%;
     }
 
-    .col-4{
-        min-width:290px;
+    .col-4 {
+        min-width: 290px;
         padding: 0;
-        width:290px;
+        width: 290px;
     }
 
-    .row{
+    .row {
         margin-left: 0;
         margin-right: 0;
+    }
+
+
+    /*beginning of the new paradigm*/
+    .mycard {
+        width: 265px !important;
+        height: 100%;
+        box-shadow: 3px 5px  5px 1px #444444;
+        border-radius: 25px 25px 25px 25px;
+        /*position: relative;*/
+        /*margin: 0;*/
+        /*margin:0;*/
+    }
+
+    .cardcollection {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 265px);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(330px, auto);
+    }
+
+    .carddata {
+        position: absolute;
+        width: 265px;
+        z-index: 200;
+        
+        padding-right: 7px;
+        padding-left: 7px;
+    }
+
+    .cardsvg {
+        width: 265px;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .cardtext {
+        position: relative;
+        background: none;
+        outline: none;
+        border: none;
+        width: 100%;
+        line-height: 1.25;
+    }
+
+    .cardName {
+        height: 36px;
+        margin-top: 5px;
+        right:0;
+        padding-left:40px;
+    }
+
+    .cardNamecorner {
+        width: 28px;
+        font-weight: 700;
+        font-size: x-large;
+        height: 28px;
+        margin-top: 7px;
+        margin-left: 220px;
+        float: left;
+    }
+
+    .cardExtraDataLeft {
+        width: 27px;
+        font-weight: 700;
+        font-size: xx-large;
+        color: #353535;
+        height: 28px;
+        margin-top: -8px;
+    }
+
+    .cardDetail1 {
+        width: 100px;
+        margin-left: 39px;
+        margin-top: 4px;
+        height: 28px;
+    }
+
+    .cardDetail2 {
+        width: 100px;
+        margin-top: 4px;
+        height: 28px;
+    }
+
+    .cardDetail3 {
+        margin-top: 4px;
+        height: 28px;
+        /*margin-left:6px;*/
+    }
+
+    .cardSummary {
+        height: 200px;
+        margin-top: 3px;
+        padding-left: 6px;
+        /*padding-right: 5px;*/
+        overflow: hidden;
     }
 </style>

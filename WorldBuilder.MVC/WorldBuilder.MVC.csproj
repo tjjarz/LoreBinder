@@ -174,7 +174,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\FeatureBindingController.cs" />
     <Compile Include="Controllers\FeaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
@@ -224,6 +223,7 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Properties\PublishProfiles\WorldBinder - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -373,7 +373,6 @@
     <Content Include="Views\Spells\Details.cshtml" />
     <Content Include="Views\Spells\Edit.cshtml" />
     <Content Include="Views\Spells\Index.cshtml" />
-    <Content Include="Views\FeatureBinding\Create.cshtml" />
     <Content Include="Views\PCtoItemBindings\Create.cshtml" />
     <Content Include="Views\PCtoItemBindings\Delete.cshtml" />
     <Content Include="Views\PCtoItemBindings\Details.cshtml" />
@@ -381,9 +380,11 @@
     <Content Include="Views\PCtoItemBindings\Index.cshtml" />
     <Content Include="Views\Shared\Curtain.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Shared\ItemBinder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Binding\Items\" />
     <Folder Include="Views\World\Features\" />
   </ItemGroup>
   <ItemGroup>

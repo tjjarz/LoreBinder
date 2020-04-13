@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BindingModels.cs" />
     <Compile Include="CharacterBuilderModels.cs" />
     <Compile Include="ElementModels.cs" />
     <Compile Include="FeatureModels.cs" />

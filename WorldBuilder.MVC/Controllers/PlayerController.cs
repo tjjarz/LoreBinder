@@ -11,7 +11,7 @@ using WorldBuilder.Data;
 using WorldBuilder.Models;
 using WorldBuilder.Services;
 
-namespace WorldBuilder.MVC.Controllers
+namespace WorldBuilder .MVC.Controllers
 {
     public class PlayerController : Controller
     {
@@ -98,9 +98,9 @@ namespace WorldBuilder.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Items = new SelectList(db.Items, "ItemID", "Name", "Summary");
-            //ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name", pCtoItemBinding.ItemID);
-
+            
+            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name");
+            ViewBag.PCID = playerCharacter.PCID;
             return View(playerCharacter);
         }
 
@@ -115,8 +115,10 @@ namespace WorldBuilder.MVC.Controllers
             {
                 db.Entry(playerCharacter).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
+            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name");
+            ViewBag.PCID = playerCharacter.PCID;
             return View(playerCharacter);
         }
 

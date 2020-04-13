@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WorldBuilder.Data;
+using WorldBuilder.Models;
 
 namespace WorldBuilder.MVC.Controllers
 {
@@ -62,7 +63,23 @@ namespace WorldBuilder.MVC.Controllers
             ViewBag.PCID = new SelectList(db.PlayerCharacters, "PCID", "Name", pCtoItemBinding.PCID);
             return View(pCtoItemBinding);
         }
+/*
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "SubjectID,ObjectID")] BindingElement bindingElement)
+        {
+            if (ModelState.IsValid)
+            {
 
+                //db.PCItems.Add(bindingElement);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.ItemID = new SelectList(db.Items, "ObjectID", "Name", bindingElement.ObjectID);
+            ViewBag.PCID = new SelectList(db.PlayerCharacters, "Subject", "Name", bindingElement.SubjectID);
+            return View(bindingElement);
+        }*/
         // GET: PCtoItemBindings/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -93,7 +110,8 @@ namespace WorldBuilder.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name", pCtoItemBinding.ItemID);
+            //ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name", pCtoItemBinding.ItemID);
+            ViewBag.ItemID = new List<Item>(db.Items);
             ViewBag.PCID = new SelectList(db.PlayerCharacters, "PCID", "Name", pCtoItemBinding.PCID);
             return View(pCtoItemBinding);
         }

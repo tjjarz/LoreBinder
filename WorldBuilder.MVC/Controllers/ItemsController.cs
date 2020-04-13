@@ -72,8 +72,10 @@ namespace WorldBuilder.MVC.Controllers
                 db.SaveChanges();
                 
                 WorldIndexService worldIndexService = CreateWorldIndexService();
-                worldIndexService.UpdateItems();
-                
+                //worldIndexService.UpdateItems();
+                worldIndexService.AddItem(item);
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

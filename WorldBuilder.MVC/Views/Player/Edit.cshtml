@@ -1,4 +1,5 @@
-﻿@model WorldBuilder.Data.PlayerCharacter
+﻿@using WorldBuilder.Models;
+@model WorldBuilder.Data.PlayerCharacter
 
 @{
     ViewBag.Title = "Edit";
@@ -266,11 +267,12 @@
 
         </section>
 
+        <br />
+        <br />
 
 
-
-        <section>
-            @Html.DropDownList("Items", null, htmlAttributes: new { @class = "form-control" })
+        <section class="snazy-box-section row">
+            @Html.Partial("ItemBinder", new WorldBuilder.Data.PCtoItemBinding())
         </section>
 
 
