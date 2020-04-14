@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WorldBuilder.Data.Item>
+﻿@model List<WorldBuilder.Data.Item>
 
 @{
     ViewBag.Title = "Index";
@@ -9,67 +9,21 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rarity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Summary)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FullText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mechanics)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Source)
-        </th>
-        <th></th>
-    </tr>
+<div class="grid-container cardcollection">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rarity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Summary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mechanics)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Source)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ItemID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ItemID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ItemID })
-        </td>
-    </tr>
-}
 
-</table>
+
+    @for (var i = 0; i < Model.Count(); i++)
+    {
+        <section class="grid-item mycard">
+
+            <img src="~/Content/assets/ItemPanel.svg" class="panel-svg-small" />
+
+            <div class="carddata grid-container">
+                @Html.EditorFor(model => model.ElementAt(i).Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
+                @Html.EditorFor(model => model.ElementAt(i).Mechanics, new { htmlAttributes = new { @class = " grid-item cardtext cardDetail2 startdis" } })
+                @Html.TextAreaFor(model => model.ElementAt(i).Summary, new { @class = "grid-item cardtext cardSummary stardis" })
+            </div>
+        </section>
+    }
+</div>

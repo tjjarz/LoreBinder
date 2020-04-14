@@ -311,9 +311,24 @@
     /*beginning of the new paradigm*/
     .mycard {
         width: 265px !important;
-        height: 100%;
+        height: 326px;
         box-shadow: 3px 5px 5px 1px #444444;
         border-radius: 25px 25px 25px 25px;
+        /*position: relative;*/
+        /*margin: 0;*/
+        /*margin:0;*/
+    }
+
+    .mybigspellpanel {
+        width: 521px !important;
+        height: 613px;
+        box-shadow: 3px 5px 5px 1px #444444;
+        border-radius: 25px 25px 25px 25px;
+        display: grid;
+        grid-template-columns: 256px 256px;
+        grid-template-rows: 256px;
+        grid-gap: 10px;
+        grid-auto-rows: minmax(330px, auto);
         /*position: relative;*/
         /*margin: 0;*/
         /*margin:0;*/
@@ -352,18 +367,46 @@
         /*grid-auto-rows: minmax(330px, auto);*/
         /*grid-auto-flow: row dense;*/
     }
+
+    .gridpanelskills {
+        display: grid;
+        grid-template-columns: 83px auto;
+        margin-top: 16px;
+        margin-left: 4px;
+        padding-right: 8px;
+        /*grid-auto-rows: 52px;*/
+        /*grid-auto-rows: minmax(330px, auto);*/
+        /*grid-auto-flow: row dense;*/
+    }
+
     .gridpanel {
         display: grid;
-        grid-template-columns: repeat(3, 82.3px);
+        grid-template-columns: repeat(3,83px);
         margin-top: 15px;
         /*grid-auto-rows: 52px;*/
         /*grid-auto-rows: minmax(330px, auto);*/
         /*grid-auto-flow: row dense;*/
     }
 
+    .panel-svg-small {
+        width: 265px;
+        height: 330px;
+        position: absolute;
+        z-index: 1;
+        shape-rendering: geometricPrecision;
+    }
+
+    .panel-svg-big-spell {
+        width: 521px;
+        height: 613px;
+        position: absolute;
+        z-index: 1;
+        shape-rendering: geometricPrecision;
+    }
 
     .panel-svg {
         width: 265px;
+        height: 619px; 
         position: absolute;
         z-index: 1;
         shape-rendering: geometricPrecision;
@@ -376,6 +419,9 @@
         border: none;
         width: 100%;
         line-height: 1.25;
+        font-size: 20px;
+        color: #DDDDDD;
+        z-index: 250;
     }
 
     .pctext {
@@ -391,7 +437,7 @@
     }
 
     .cardName {
-        height: 36px;
+        height: 44px;
         margin-top: 5px;
         right: 0;
         padding-left: 40px;
@@ -411,13 +457,16 @@
         grid-auto-rows: 32px;
     }
 
+    .fieldskills{
+        height: 34.5px;
+    }
     /*.field2col {
         width: 124px;
         grid-column: 1 /2;
     }
         */
-    .panellabel{
-        height:36px;
+    .panellabel {
+        height: 36px;
     }
 
     .field3col {
@@ -443,10 +492,11 @@
 
     .pcsummary {
         height: 545px;
-        margin-top: 3px;
+        margin-top: 8px;
         padding-left: 8px;
         padding-right: 8px;
         overflow: hidden;
+        resize: none;
     }
 
     .cardNamecorner {
@@ -476,22 +526,64 @@
     }
 
     .cardDetail2 {
-        width: 100px;
+        width: 120px;
+        padding-left: 2px;
+        margin-left: 2px;
         margin-top: 4px;
         height: 28px;
+        font-size: 18px;
     }
 
     .cardDetail3 {
-        margin-top: 4px;
-        height: 28px;
+        margin-top: 10px;
+        height: 42px;
         /*margin-left:6px;*/
     }
 
     .cardSummary {
-        height: 200px;
-        margin-top: 3px;
+        height: 180px;
+        margin-top: -4px;
+        padding-left: 8px;
+        /*padding-right: 5px;*/
+        overflow: hidden;
+        resize: none;
+        font-size: 16px;
+    }
+
+    .spellsummary {
+        height: 256px;
+        margin-top: 0;
+        margin-left:0;
+        padding-top: 14px;
+        padding-right: 14px;
+        padding-left: 0;
+        /*padding-right: 5px;*/
+        overflow: hidden;
+        resize: none;
+        font-size: 16px;
+    }
+
+    .spellfulltext {
+        height: 348px;
+        width:512px;
+        margin-top: 0;
+        margin-left: 0;
+        padding-top: 4px;
+        padding-right: 7px;
+        padding-left: 7px;
+        /*padding-right: 5px;*/
+        overflow: hidden;
+        resize: none;
+        font-size: 16px;
+    }
+
+    .cardtextarea {
+        height: 42px;
+        margin-top: 6px;
         padding-left: 6px;
         /*padding-right: 5px;*/
         overflow: hidden;
+        resize: none;
+        font-size: 18px;
     }
 </style>

@@ -36,7 +36,7 @@ namespace WorldBuilder.MVC.Controllers
                 items = items.Where(s => s.Name.Contains(searchString));
             }
 
-            return View(items);
+            return View(items.ToList());
         }
 
         // GET: Items/Details/5

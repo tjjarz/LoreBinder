@@ -27,8 +27,16 @@ namespace WorldBuilder.MVC.Controllers
         }
 
         // GET: Features
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            var features = from i in db.Features select i;
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                features = features.Where(s => s.Name.Contains(searchString));
+            }
+
             return View(db.Features.ToList());
         }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WorldBuilder.Data.Spell>
+﻿@model List<WorldBuilder.Data.Spell>
 
 @{
     ViewBag.Title = "Index";
@@ -11,111 +11,24 @@
 </p>
 <br />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br />
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SpellLevel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SpellSchool)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CastTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RangeArea)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Duration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Concentration)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Summary)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mechanics)
-        </th>
-        <th></th>
-    </tr>
+<div class="grid-container cardcollection">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SpellLevel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SpellSchool)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CastTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RangeArea)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Concentration)
-        </td>
-        <td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SpellEffectType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Summary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mechanics)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SpellID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SpellID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SpellID })
-        </td>
-    </tr>
-}
+    
+    @for( var i = 0; i < Model.Count(); i++)
+    {
+        <section class="grid-item mycard">
 
-</table>
+            <img src="~/Content/assets/SpellPanel.svg" class="panel-svg-small" />
+
+            <div class="carddata grid-container">
+                @Html.EditorFor(model => model[i].Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
+                @Html.EditorFor(model => model[i].CastTime, new { htmlAttributes = new { @class = " grid-item cardtext cardDetail2 startdis" } })
+                @Html.EditorFor(model => model[i].Duration, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2 startdis" } })
+                @Html.TextAreaFor(model => model[i].RangeArea, new { @class = "grid-item cardtext cardDetail3 cardtextarea startdis" })
+                @Html.TextAreaFor(model => model[i].Summary, new { @class = "grid-item cardtext cardSummary stardis" })
+            </div>
+        </section>
+    }
+</div>
+

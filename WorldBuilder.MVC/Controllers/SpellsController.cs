@@ -29,7 +29,9 @@ namespace WorldBuilder.MVC.Controllers
         // GET: Spells
         public ActionResult Index()
         {
-            return View(db.Spells.ToList());
+            List<Spell> allspells = new List<Spell>();
+            allspells = db.Spells.ToList();
+            return View(allspells);
         }
 
         // GET: Spells/Details/5

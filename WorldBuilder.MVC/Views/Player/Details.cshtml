@@ -19,7 +19,7 @@
         <img src="~/Content/assets/PersonalityPanel.svg" class="panel-svg panel-person" />
         <div class="carddata grid-container">
             @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "grid-item pctext pcname panelboldtext" } })
-            @Html.TextAreaFor(model => model.Summary, new { @class = "grid-item cardtext pctext pcsummary" })
+            @Html.TextAreaFor(model => model.Personality, new { @class = "grid-item cardtext pctext pcsummary" })
         </div>
     </section>
     <section class="grid-item panel-cont">
@@ -39,46 +39,84 @@
             @Html.EditorFor(model => model.DEX, new { htmlAttributes = new { @class = "grid-item pctext pchealth panelboldtext field3col startdis" } })
 
             <!--Mod STR save-->
-            @Html.EditorFor(model => model.STR, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
-            <div class="grid-item pctext  field3col panelboldtext">STR</div>
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value=@((Convert.ToInt32(Model.STR) - 10) / 2) />
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value="STR" />
             @Html.EditorFor(model => model.STR, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
 
             <!--Mod Dex save-->
-            @Html.EditorFor(model => model.DEX, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
-            <div class="grid-item pctext  field3col panelboldtext">DEX</div>
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value=@((Convert.ToInt32(Model.DEX) - 10) / 2) />
+
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value="DEX" />
             @Html.EditorFor(model => model.DEX, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
 
             <!--Mod CON save-->
-            @Html.EditorFor(model => model.CON, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
-            <div class="grid-item pctext  field3col panelboldtext">CON</div>
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value=@((Convert.ToInt32(Model.CON) - 10) / 2) />
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value="CON" />
             @Html.EditorFor(model => model.CON, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
 
             <!--Mod INT save-->
-            @Html.EditorFor(model => model.INT, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
-            <div class="grid-item pctext  field3col panelboldtext">INT</div>
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value=@((Convert.ToInt32(Model.INT) - 10) / 2) />
+            @*@Html.EditorFor(model => ((Convert.ToInt32(model.INT) - 10) / 2), new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })*@
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value="INT" />
             @Html.EditorFor(model => model.INT, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
 
             <!--Mod WIS save-->
-            @Html.EditorFor(model => model.WIS, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
-            <div class="grid-item pctext  field3col panelboldtext">WIS</div>
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value=@((Convert.ToInt32(Model.WIS) - 10) / 2) />
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value="WIS" />
             @Html.EditorFor(model => model.WIS, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
 
             <!--Mod CHA save-->
-            @Html.EditorFor(model => model.CHA, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
-            <div class="grid-item pctext  field3col panelboldtext">CHA</div>
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value=@((Convert.ToInt32(Model.CHA) - 10) / 2) />
+            <input class="grid-item pctext field3col panelboldtext" disabled="disabled" value="CHA" />
             @Html.EditorFor(model => model.CHA, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
         </div>
-        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
-        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
-        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
-        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
-        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+            <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+            <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+            <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+            <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+            <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
 
-</div>
+        </div>
 
     </section>
 <section class="grid-item panel-cont">
     <img src="~/Content/assets/SkillsPanel.svg" class="panel-svg panel-skills" />
+    <div class="carddata grid-container gridpanelskills">
+        @Html.EditorFor(model => model.Athletics, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Athletics" />
+        @Html.EditorFor(model => model.Acrobatics, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Acrobatics" />
+        @Html.EditorFor(model => model.SleightofHand, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Sleight of Hand" />
+        @Html.EditorFor(model => model.Stealth, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Stealth" />
+        @Html.EditorFor(model => model.Arcana, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Arcana" />
+        @Html.EditorFor(model => model.History, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="History" />
+        @Html.EditorFor(model => model.Investigation, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Investigation" />
+        @Html.EditorFor(model => model.Nature, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Nature" />
+        @Html.EditorFor(model => model.AnimalHandling, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Animal Handling" />
+        @Html.EditorFor(model => model.Insight, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Insight" />
+        @Html.EditorFor(model => model.Medicine, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Medicine" />
+        @Html.EditorFor(model => model.Perception, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Perception" />
+        @Html.EditorFor(model => model.Survival, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Survival" />
+        @Html.EditorFor(model => model.Deception, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Deception" />
+        @Html.EditorFor(model => model.Intimidation, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Intimidation" />
+        @Html.EditorFor(model => model.Performance, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Performance" />
+        @Html.EditorFor(model => model.Persuasion, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext fieldskills startdis" } })
+        <input class="grid-item pctext fieldskills" disabled="disabled" value="Persuasion" />
+    </div>
 </section>
 
 </div>
