@@ -11,6 +11,7 @@ using WorldBuilder.Models;
 
 namespace WorldBuilder.MVC.Controllers
 {
+    [Authorize]
     public class PCtoItemBindingsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

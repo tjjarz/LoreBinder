@@ -1,14 +1,103 @@
 ﻿@model WorldBuilder.Data.PlayerCharacter
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Name + " Sheet";
 }
 
-<h2>Details</h2>
 
+
+
+
+
+
+
+
+
+
+<div class="playerbox grid-container cardcollection">
+    <section class="grid-item panel-cont">
+        <img src="~/Content/assets/PersonalityPanel.svg" class="panel-svg panel-person" />
+        <div class="carddata grid-container">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "grid-item pctext pcname panelboldtext" } })
+            @Html.TextAreaFor(model => model.Summary, new { @class = "grid-item cardtext pctext pcsummary" })
+        </div>
+    </section>
+    <section class="grid-item panel-cont">
+        <img src="~/Content/assets/StatsPanel.svg" class="panel-svg panel-stats" />
+        <div class="carddata grid-container gridpanelhealth">
+            <!--HP and HD names and fields-->
+            <div class="grid-item pctext field2col">Health</div><div class="grid-item pctext field2col">Hit Dice</div>
+            @Html.EditorFor(model => model.CurHP, new { htmlAttributes = new { @class = "grid-item pctext pchealth field2col" } })
+            @Html.EditorFor(model => model.CurHD, new { htmlAttributes = new { @class = "grid-item pctext pchealth field2col" } })
+            @Html.EditorFor(model => model.MaxHP, new { htmlAttributes = new { @class = "grid-item pctext field2col startdis" } })
+            @Html.EditorFor(model => model.HitDice, new { htmlAttributes = new { @class = "grid-item pctext field2col startdis" } })
+        <div class="grid-container gridpanel">
+            <!--proficiency(calc) AC(calc) & Initiative(calc)-->
+            <div class="grid-item pctext panellabel">Prof.</div><div class="grid-item pctext panellabel">AC</div><div class="grid-item pctext panellabel">Init.</div>
+            @Html.EditorFor(model => model.DEX, new { htmlAttributes = new { @class = "grid-item pctext pchealth panelboldtext field3col startdis" } })
+            @Html.EditorFor(model => model.DEX, new { htmlAttributes = new { @class = "grid-item pctext pchealth panelboldtext field3col startdis" } })
+            @Html.EditorFor(model => model.DEX, new { htmlAttributes = new { @class = "grid-item pctext pchealth panelboldtext field3col startdis" } })
+
+            <!--Mod STR save-->
+            @Html.EditorFor(model => model.STR, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+            <div class="grid-item pctext  field3col panelboldtext">STR</div>
+            @Html.EditorFor(model => model.STR, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+
+            <!--Mod Dex save-->
+            @Html.EditorFor(model => model.DEX, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+            <div class="grid-item pctext  field3col panelboldtext">DEX</div>
+            @Html.EditorFor(model => model.DEX, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+
+            <!--Mod CON save-->
+            @Html.EditorFor(model => model.CON, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+            <div class="grid-item pctext  field3col panelboldtext">CON</div>
+            @Html.EditorFor(model => model.CON, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+
+            <!--Mod INT save-->
+            @Html.EditorFor(model => model.INT, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+            <div class="grid-item pctext  field3col panelboldtext">INT</div>
+            @Html.EditorFor(model => model.INT, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+
+            <!--Mod WIS save-->
+            @Html.EditorFor(model => model.WIS, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+            <div class="grid-item pctext  field3col panelboldtext">WIS</div>
+            @Html.EditorFor(model => model.WIS, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+
+            <!--Mod CHA save-->
+            @Html.EditorFor(model => model.CHA, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+            <div class="grid-item pctext  field3col panelboldtext">CHA</div>
+            @Html.EditorFor(model => model.CHA, new { htmlAttributes = new { @class = "grid-item pctext panelboldtext field3col startdis" } })
+        </div>
+        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+        <!--DROPDOWN FOR CONDITIONS GOES HERE!!!!-->
+
+</div>
+
+    </section>
+<section class="grid-item panel-cont">
+    <img src="~/Content/assets/SkillsPanel.svg" class="panel-svg panel-skills" />
+</section>
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <div>
-    <h4>PlayerCharacter</h4>
-    <hr />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)

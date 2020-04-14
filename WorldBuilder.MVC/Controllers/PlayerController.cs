@@ -13,6 +13,7 @@ using WorldBuilder.Services;
 
 namespace WorldBuilder .MVC.Controllers
 {
+    [Authorize]
     public class PlayerController : Controller
     {
         private readonly ApplicationDbContext db = new ApplicationDbContext();

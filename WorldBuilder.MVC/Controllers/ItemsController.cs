@@ -12,6 +12,7 @@ using WorldBuilder.Services;
 
 namespace WorldBuilder.MVC.Controllers
 {
+    [Authorize]
     public class ItemsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

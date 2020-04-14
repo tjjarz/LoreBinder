@@ -7,6 +7,7 @@ using WorldBuilder.Models;
 
 namespace WorldBuilder.MVC.Controllers
 {
+    [Authorize]
     public class WorldController : Controller
     {
         string _filepath = "C:/Users/Tom/OneDrive/Codespace/Red/WorldBuilder/WorldBuilder.Data/WorldData.xml";

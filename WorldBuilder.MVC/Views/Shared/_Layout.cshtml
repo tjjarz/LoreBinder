@@ -298,11 +298,31 @@
     }
 
 
+
+
+
+
+
+
+
+
+
+
     /*beginning of the new paradigm*/
     .mycard {
         width: 265px !important;
         height: 100%;
-        box-shadow: 3px 5px  5px 1px #444444;
+        box-shadow: 3px 5px 5px 1px #444444;
+        border-radius: 25px 25px 25px 25px;
+        /*position: relative;*/
+        /*margin: 0;*/
+        /*margin:0;*/
+    }
+
+    .panel-cont {
+        width: 265px !important;
+        height: 614px;
+        box-shadow: 3px 5px 5px 1px #444444;
         border-radius: 25px 25px 25px 25px;
         /*position: relative;*/
         /*margin: 0;*/
@@ -320,15 +340,33 @@
         position: absolute;
         width: 265px;
         z-index: 200;
-        
         padding-right: 7px;
         padding-left: 7px;
     }
 
-    .cardsvg {
+    .gridpanelhealth {
+        display: grid;
+        grid-template-columns: repeat(2, 125px);
+        margin-top:16px;
+        /*grid-auto-rows: 52px;*/
+        /*grid-auto-rows: minmax(330px, auto);*/
+        /*grid-auto-flow: row dense;*/
+    }
+    .gridpanel {
+        display: grid;
+        grid-template-columns: repeat(3, 82.3px);
+        margin-top: 15px;
+        /*grid-auto-rows: 52px;*/
+        /*grid-auto-rows: minmax(330px, auto);*/
+        /*grid-auto-flow: row dense;*/
+    }
+
+
+    .panel-svg {
         width: 265px;
         position: absolute;
         z-index: 1;
+        shape-rendering: geometricPrecision;
     }
 
     .cardtext {
@@ -340,11 +378,75 @@
         line-height: 1.25;
     }
 
+    .pctext {
+        position: relative;
+        background: none;
+        outline: none;
+        border: none;
+        width: 100%;
+        text-align:center;
+        line-height: 1.25;
+        font-size: 20px;
+        color: #DDDDDD;
+    }
+
     .cardName {
         height: 36px;
         margin-top: 5px;
-        right:0;
-        padding-left:40px;
+        right: 0;
+        padding-left: 40px;
+    }
+
+    .pcname {
+        height: 36px;
+        margin-top: 16px;
+        left: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .fieldname {
+        font-size: 18px;
+        font-weight: 700;
+        grid-auto-rows: 32px;
+    }
+
+    /*.field2col {
+        width: 124px;
+        grid-column: 1 /2;
+    }
+        */
+    .panellabel{
+        height:36px;
+    }
+
+    .field3col {
+        height: 52px;
+        vertical-align:middle;
+    }
+
+    .pchealth {
+        /*height: 62px;*/
+        /*margin-top: 16px; for science you monster*/
+        left: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        font-size: 52px;
+        font-weight: 700;
+        font-weight: 700;
+    }
+
+    .panelboldtext {
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .pcsummary {
+        height: 545px;
+        margin-top: 3px;
+        padding-left: 8px;
+        padding-right: 8px;
+        overflow: hidden;
     }
 
     .cardNamecorner {
