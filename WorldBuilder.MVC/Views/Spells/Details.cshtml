@@ -4,11 +4,16 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Model.Name > Details</h2>
+<p>
 
-<div class="grid-container">
-    <section class="grid-item mybigspellpanel grid-container">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SpellID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
 
+
+<div class="grid-container mybigspellpanel">
+    <section class="grid-item">
         <img src="~/Content/assets/SpellPanelBig.svg" class="panel-svg-big-spell" />
         <div class="grid-item carddata mybigspellpanel grid-container">
             <div class="grid-item grid-container">
@@ -19,158 +24,25 @@
                 @Html.EditorFor(model => model.SpellSchool, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2" } })
                 @Html.EditorFor(model => model.SpellEffectType, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2" } })
                 <div class="grid-item grid-container componentpanel">
-                    @Html.EditorFor(model => model.Verbal, new { htmlAttributes = new { @class = "form-control field-value-check grid-item" } })
-                    @Html.EditorFor(model => model.Somatic, new { htmlAttributes = new { @class = "form-control field-value-check  grid-item" } })
-                    @Html.EditorFor(model => model.Material, new { htmlAttributes = new { @class = "form-control field-value-check  grid-item" } })
-                    @Html.EditorFor(model => model.Components, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail3 cardtextarea" } })
+                    <div class="grid-item comptoggles">
+                        <input class="complabel" disabled="disabled" value="Verbal" />
+                        @Html.EditorFor(model => model.Verbal, new { htmlAttributes = new { @class = "componentsbutton" } })
+                    </div>
+                    <div class="grid-item comptoggles">
+                        <input class="complabel" disabled="disabled" value="Somatic" />
+                        @Html.EditorFor(model => model.Somatic, new { htmlAttributes = new { @class = "componentsbutton" } })
+                    </div>
+                    <div class="grid-item comptoggles">
+                        <input class="complabel" disabled="disabled" value="Material" />
+                        @Html.EditorFor(model => model.Material, new { htmlAttributes = new { @class = "componentsbutton" } })
+                    </div>
+                    @Html.EditorFor(model => model.Components, new { htmlAttributes = new { @class = "grid-item cardtext componenttext" } })
                 </div>
-
-
             </div>
-            <div class="grid-item">
                 @Html.TextAreaFor(model => model.Summary, new { @class = "grid-item cardtext cardSummary spellsummary" })
-            </div>
-            <div class="grid-item">
                 @Html.TextAreaFor(model => model.FullText, new { @class = "grid-item cardtext cardSummary spellfulltext" })
-            </div>
         </div>
-
-
     </section>
 </div>
+<br />
 
-
-
-
-
-
-<div>
-    <h4>Spell</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SpellLevel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SpellLevel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SpellSchool)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SpellSchool)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CastTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CastTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RangeArea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RangeArea)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Duration)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Duration)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Concentration)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Concentration)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Components)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Components)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Verbal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Verbal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Somatic)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Somatic)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Material)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Material)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SpellEffectType)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SpellEffectType)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Summary)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Summary)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FullText)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FullText)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mechanics)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mechanics)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SpellID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

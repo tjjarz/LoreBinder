@@ -11,7 +11,7 @@
 <h3>Greetings</h3>
 <h4>This is a recored announcement, as we are all out at the moment.</h4>
 <h4>The commercial council of magrathea thanks you for your esteamed visit but regrets that the entire planet is temporarily closed.</h4>
-@*@
+
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
@@ -42,7 +42,7 @@
             </div>
         </div>
     }
-*@
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

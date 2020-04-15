@@ -61,6 +61,10 @@ namespace WorldBuilder .MVC.Controllers
         // GET: Player/Create
         public ActionResult Create()
         {
+            ViewBag.Items = new SelectList(db.Items, "ItemID", "Name");
+            ViewBag.Features = new SelectList(db.Features, "FeatureID", "Name");
+            ViewBag.Spells = new SelectList(db.Spells, "SpellID", "Name");
+
             return View();
         }
 

@@ -1,7 +1,7 @@
 ﻿@model WorldBuilder.Data.Item
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Adding New Item";
 }
 
 <h2>Create an Item</h2>
@@ -10,70 +10,36 @@
 {
     @Html.AntiForgeryToken()
 
-    <h4>Item</h4>
-    <hr />
-    <div class="form-horizontal row">
+    <div class="form-horizontal">
+        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="snazy-box my-card-item">
-            <div class="less-snazy-box">
-                <input type="text" class="form-control field-name" value="Name" disabled>@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-            <div class="less-snazy-box">
-                <input type="text" class="form-control field-name" value="Type" disabled>@Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-            <div class="less-snazy-box">
-                <input type="text" class="form-control field-name" value="Rarity" disabled>@Html.EditorFor(model => model.Rarity, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-            <div class="less-snazy-box">
-                <input type="text" class="form-control field-name-textarea" value="Summary" disabled>@Html.TextAreaFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control field-value-textarea" } })
-            </div>
-            <div class="less-snazy-box">
-                <input type="text" class="form-control field-name-textarea" value="Description" disabled>@Html.TextAreaFor(model => model.FullText, new { htmlAttributes = new { @class = "form-control field-value-textarea" } })
-            </div>
-            <div class="less-snazy-box">
-                <input type="text" class="form-control field-name" value="Mechanics" disabled>@Html.EditorFor(model => model.Mechanics, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-            <div class="less-snazy-box">
-                <input type="text" class="form-control field-name" value="Notes" disabled>@Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-            <div style="border-radius:0 0 0 20px">
-                <input type="text" class="form-control field-name" value="References" disabled>@Html.EditorFor(model => model.Source, new { htmlAttributes = new { @class = "form-control field-value" } })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+                @Html.ActionLink("Back to List", "Index")
             </div>
         </div>
-    </div>
+        <hr />
+        <div class="form-group">
+            <div class="grid-container">
+                <section class="grid-item grid-container panel-cont">
+                    <img src="~/Content/assets/ItemPanelLong.svg" class="panel-svg" />
+                    <div class="grid-item carddata grid-container">
+                        <div class="grid-item grid-container">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName panelboldtext", placeholder = "Name" } })
+                            @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail4", placeholder = "Item Type" } })
+                            @Html.EditorFor(model => model.Rarity, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail4", placeholder = "Rarity" } })
+                            @Html.TextAreaFor(model => model.Mechanics, new { @class = " grid-item cardtext cardMechanics", placeholder = "Mechanics" })
+                        </div>
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 204 257" class="my-card-item">
-        <defs>
-            <style>
-                .cls-1 {
-                    fill: #806ce5;
-                }
+                        @Html.TextAreaFor(model => model.Summary, new { @class = "grid-item cardtext ItemcardSummary", placeholder = "Summary" })
 
-                .cls-2 {
-                    fill: #353535;
-                }
-            </style>
-        </defs>
-        <g id="Layer_2" data-name="Layer 2">
-            <g id="Layer_1-2" data-name="Layer 1">
-                <path class="cls-1" d="M187,0H17A17,17,0,0,0,0,17V240a17,17,0,0,0,17,17H187a17,17,0,0,0,17-17V17A17,17,0,0,0,187,0Zm13,240a13,13,0,0,1-13,13H17A13,13,0,0,1,4,240V62H21.75A14.25,14.25,0,0,0,36,47.75V4H187a13,13,0,0,1,13,13Z" />
-                <path class="cls-2" d="M187,6a11,11,0,0,1,11,11V240a11,11,0,0,1-11,11H17A11,11,0,0,1,6,240V64c13.4.26,31.14,2.14,32-16.25C38,38.17,38,15.33,38,6H187m0-2H36c0,10.12,0,33.42,0,43.75C35.57,65.28,15.87,61.84,4,62V240a13,13,0,0,0,13,13H187a13,13,0,0,0,13-13V17A13,13,0,0,0,187,4Z" />
-                <polygon class="cls-2" points="9 21 17 22 14.01 15.53 21.5 16.5 20 12 25 11 30 7 27.15 13 23.5 13.5 25.5 19.5 19 19 22.5 25.5 13 24 14 29 10 28 9 21" />
-                <path class="cls-2" d="M24,39l2-4c-6.24,0-15.87-4.7-16,10,.15,14.13,9.07,10.42,15,10l-1-4C7.66,61,7.77,29,24,39Z" />
-                <path class="cls-2" d="M25,45c.06,3.89-6.06,3.89-6,0S25.06,41.11,25,45Z" />
-            </g>
-        </g>
-    </svg>
+                        @Html.TextAreaFor(model => model.FullText, new { @class = "grid-item cardtext cardSummary cardlongfulltext", placeholder = "Full Description" })
 
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.Source, new { htmlAttributes = new { @class = "grid-item cardtext carddetailbottom", placeholder = "Source" } })
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

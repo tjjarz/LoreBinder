@@ -1,131 +1,58 @@
 ﻿@model WorldBuilder.Data.Spell
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create a Spell";
 }
 
-<h2>Create</h2>
+<h2>Create a Spell</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Spell</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <section class="">
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Spell Name" disabled>@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-        </div> 
-
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Spell Level" disabled>@Html.EditorFor(model => model.SpellLevel, new { htmlAttributes = new { @class = "form-control field-value-short" } })
-            </div> 
-
-            <div class="snazy-box"> 
-                <input type="text" class="form-control field-name" value="School" disabled>@Html.EditorFor(model => model.SpellSchool, new { htmlAttributes = new { @class = "form-control field-value-short" } })
-            </div>
-        </div>
-
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Casting Time" disabled>@Html.EditorFor(model => model.CastTime, new { htmlAttributes = new { @class = "form-control field-value-short" } })
-            </div> 
-
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Range / Area" disabled>@Html.EditorFor(model => model.RangeArea, new { htmlAttributes = new { @class = "form-control field-value-short" } })
-            </div>
-        </div>
-
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Duration" disabled>@Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control field-value-short" } })
-            </div> 
-
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Concentration" disabled>@Html.EditorFor(model => model.Concentration, new { htmlAttributes = new { @class = "form-control field-value-check" } })
-            </div>
-        </div>
-    </section>
-        <br />
-        <!--Components section-->
-        <div class="row">
-            <section class="snazy-box-section form-horizontal col">
-                <h4>Components</h4>
-                <div class="form-inline form-group form-horizontal">
-                    <div class="snazy-box">
-                        <input type="text" class="form-control field-name-check" value="Verbal" disabled>
-                        <div>@Html.EditorFor(model => model.Verbal, new { htmlAttributes = new { @class = "form-control field-value-check" } })</div>
-                    </div>
-
-                    <div class="snazy-box">
-                        <input type="text" class="form-control field-name-check" value="Somatic" disabled>
-                        <div>@Html.EditorFor(model => model.Somatic, new { htmlAttributes = new { @class = "form-control field-value-check" } })</div>
-                    </div>
-
-                    <div class="snazy-box">
-                        <input type="text" class="form-control field-name-check" value="Material" disabled>
-                        <div class="align-items-center">@Html.EditorFor(model => model.Material, new { htmlAttributes = new { @class = "form-control field-value-check" } })</div>
-                    </div>
-                </div>
-
-                <div class="form-inline form-group form-horizontal">
-                    <div class="snazy-box">
-                        <input type="text" class="form-control field-name" value="Components" disabled>@Html.EditorFor(model => model.Components, new { htmlAttributes = new { @class = "form-control field-value" } })
-                    </div>
-                </div>
-            </section>
-            <div class="col"></div>
-        </div>
-        <br />
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Spell Effect Type" disabled>@Html.EditorFor(model => model.SpellEffectType, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-        </div>
-
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Summary" disabled>@Html.EditorFor(model => model.Summary, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-        </div>
-
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Description" disabled>@Html.EditorFor(model => model.FullText, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-        </div>
-
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Mechanics" disabled>@Html.EditorFor(model => model.Mechanics, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-        </div>
-
-        <div class="form-inline form-group form-horizontal">
-            <div class="snazy-box">
-                <input type="text" class="form-control field-name" value="Notes" disabled>@Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control field-value" } })
-            </div>
-        </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
+                @Html.ActionLink("Back to List", "Index")
             </div>
+        </div>
+        <hr />
+        <div class="grid-container mybigspellpanel">
+            <section class="grid-item">
+                <img src="~/Content/assets/SpellPanelBig.svg" class="panel-svg-big-spell" />
+                <div class="grid-item carddata mybigspellpanel grid-container">
+                    <div class="grid-item grid-container">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName panelboldtext", placeholder = "Name" } })
+                        @Html.EditorFor(model => model.CastTime, new { htmlAttributes = new { @class = " grid-item cardtext cardDetail2", placeholder = "Casting Time" } })
+                        @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2", placeholder = "Duration" } })
+                        @Html.TextAreaFor(model => model.RangeArea, new { @class = "grid-item cardtext cardDetail3 cardtextarea", placeholder = "Range & Area" })
+                        @Html.EditorFor(model => model.SpellSchool, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2", placeholder = "School" } })
+                        @Html.EditorFor(model => model.SpellEffectType, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2", placeholder = "Effect Type" } })
+                        <div class="grid-item grid-container componentpanel">
+                            <div class="grid-item comptoggles">
+                                <input class="complabel" disabled="disabled" value="Verbal" />
+                                @Html.EditorFor(model => model.Verbal, new { htmlAttributes = new { @class = "componentsbutton" } })
+                            </div>
+                            <div class="grid-item comptoggles">
+                                <input class="complabel" disabled="disabled" value="Somatic" />
+                                @Html.EditorFor(model => model.Somatic, new { htmlAttributes = new { @class = "componentsbutton" } })
+                            </div>
+                            <div class="grid-item comptoggles">
+                                <input class="complabel" disabled="disabled" value="Material" />
+                                @Html.EditorFor(model => model.Material, new { htmlAttributes = new { @class = "componentsbutton" } })
+                            </div>
+                            @Html.EditorFor(model => model.Components, new { htmlAttributes = new { @class = "grid-item cardtext componenttext", placeholder = "Required Components" } })
+                        </div>
+                    </div>
+                    @Html.TextAreaFor(model => model.Summary, new { @class = "grid-item cardtext cardSummary spellsummary", placeholder = "Summary" })
+                    @Html.TextAreaFor(model => model.FullText, new { @class = "grid-item cardtext cardSummary spellfulltext", placeholder = "Full Description" })
+                </div>
+            </section>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-<style>
-    .field-name {
-        width: 300px !important;
-    }
-</style>
+

@@ -1,56 +1,32 @@
 ﻿@model WorldBuilder.Data.Feature
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Feature Details";
 }
 
-<h2>Details</h2>
+<h2>Feature Details</h2>
 
-<div>
-    <h4>Feature</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<div class="grid-container">
+    <section class="grid-item grid-container panel-cont">
+        <img src="~/Content/assets/FeaturePanelLong.svg" class="panel-svg" />
+        <div class="grid-item carddata grid-container">
+            <div class="grid-item grid-container">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName panelboldtext" } })
+                @Html.TextAreaFor(model => model.Mechanics, new { @class = " grid-item cardtext cardMechanics" })
+            </div>
+            <div class="grid-item">
+                @Html.TextAreaFor(model => model.Summary, new { @class = "grid-item cardtext cardSummary" })
+            </div>
+            <div class="grid-item">
+                @Html.TextAreaFor(model => model.FullText, new { @class = "grid-item cardtext cardSummary cardlongfulltext" })
+            </div>
+            <div class="grid-item">
+                @Html.EditorFor(model => model.Source, new { htmlAttributes = new { @class = "grid-item cardtext carddetailbottom" } })
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Summary)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Summary)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FullText)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FullText)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mechanics)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mechanics)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Source)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Source)
-        </dd>
-
-    </dl>
+    </section>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.FeatureID }) |
