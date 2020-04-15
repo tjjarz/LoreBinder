@@ -55,6 +55,10 @@ namespace WorldBuilder .MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            playerCharacter.Items = GetPCItems(id);
+            playerCharacter.Features = GetPCFeatures(id);
+            playerCharacter.Spells = GetPCSpells(id);
             return View(playerCharacter);
         }
 
@@ -105,7 +109,8 @@ namespace WorldBuilder .MVC.Controllers
             }
             
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name");
-            ViewBag.PCID = playerCharacter.PCID;
+            ViewBag.PCID = new SelectList(db.PlayerCharacters, "PCID", "Name");
+            //ViewBag.PCID = playerCharacter.PCID;
             return View(playerCharacter);
         }
 
@@ -123,7 +128,8 @@ namespace WorldBuilder .MVC.Controllers
                 //return RedirectToAction("Index");
             }
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "Name");
-            ViewBag.PCID = playerCharacter.PCID;
+            ViewBag.PCID = new SelectList(db.PlayerCharacters, "PCID", "Name");
+            //ViewBag.PCID = playerCharacter.PCID;
             return View(playerCharacter);
         }
 
@@ -152,6 +158,42 @@ namespace WorldBuilder .MVC.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public List<Item> GetPCItems(int? pcid)
+        {
+            List<Item> pcItems = new List<Item>();
+            var pcbounditems = db.PCItems.Where(s => s.PCID == pcid).ToList();
+            //var pcBoundItems = db.PCItems.Include(p => p.Item).Include(p => p.PC);
+            foreach (PCtoItemBinding binding in pcbounditems)
+            {
+                pcItems.Add(db.Items.Find(binding.ItemID));
+            }
+            return pcItems;
+        }
+        
+        public List<Feature> GetPCFeatures(int? pcid)
+        {
+            List<Feature> pcFeatures = new List<Feature>();
+            var pcbounditems = db.PCFeatures.Where(s => s.PCID == pcid).ToList();
+            foreach (PCtoFeatureBinding binding in pcbounditems)
+            {
+                pcFeatures.Add(db.Features.Find(binding.FeatureID));
+            }
+            return pcFeatures;
+        }
+        
+        public List<Spell> GetPCSpells(int? pcid)
+        {
+            List<Spell> pcSpells = new List<Spell>();
+            var pcbounditems = db.PCSpells.Where(s => s.PCID == pcid).ToList();
+            foreach (PCtoSpellBinding binding in pcbounditems)
+            {
+                pcSpells.Add(db.Spells.Find(binding.SpellID));
+            }
+            return pcSpells;
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

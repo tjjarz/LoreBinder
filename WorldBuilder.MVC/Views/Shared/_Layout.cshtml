@@ -310,10 +310,10 @@
 
     /*beginning of the new paradigm*/
     .mycard {
-        width: 265px !important;
+        /*width: 265px !important;*/
         height: 326px;
         box-shadow: 3px 5px 5px 1px #444444;
-        border-radius: 25px 25px 25px 25px;
+        border-radius: 30px 30px 30px 30px;
         /*position: relative;*/
         /*margin: 0;*/
         /*margin:0;*/
@@ -349,6 +349,13 @@
         grid-template-columns: repeat(auto-fill, 265px);
         grid-gap: 10px;
         grid-auto-rows: minmax(330px, auto);
+    }
+
+    .pccards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 265px);
+        grid-gap: 10px;
+        grid-auto-rows: 330px;
     }
 
     .carddata {
@@ -613,7 +620,17 @@
 
     .cardSummary {
         height: 215px;
-        margin-top: -4px;
+        margin-top: 0;
+        padding-left: 8px;
+        /*padding-right: 5px;*/
+        overflow: hidden;
+        resize: none;
+        font-size: 16px;
+    }
+
+    .SpellCardSummary {
+        height: 190px;
+        margin-top: 0;
         padding-left: 8px;
         /*padding-right: 5px;*/
         overflow: hidden;
@@ -645,7 +662,7 @@
         margin-top: 0px;
         height: 26px;
         font-size: 16px;
-        /*margin-left:6px;*/
+
     }
 
     .spellsummary {
@@ -679,7 +696,7 @@
 
     .cardtextarea {
         height: 42px;
-        margin-top: 6px;
+        margin-top: 2px;
         padding-left: 6px;
         /*padding-right: 5px;*/
         overflow: hidden;

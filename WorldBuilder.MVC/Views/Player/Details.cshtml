@@ -108,5 +108,47 @@
             <input class="grid-item pctext fieldskills" disabled="disabled" value="Persuasion" />
         </div>
     </section>
+    <section class="grid-container pccards player-features">
+        @foreach (var feature in Model.Features)
+        {
+            <section class="grid-item mycard" id="item_@feature.FeatureID">
+                <img src="~/Content/assets/FeaturePanel.svg" class="panel-svg-small" />
+                <div class="carddata grid-container">
+                    @Html.EditorFor(model => feature.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
+                    @Html.EditorFor(model => feature.Mechanics, new { htmlAttributes = new { @class = " grid-item cardtext cardtextarea startdis" } })
+                    @Html.TextAreaFor(model => feature.Summary, new { @class = "grid-item cardtext cardSummary stardis" })
+                </div>
+            </section>
+        }
+    </section>
+
+    <section class="grid-container pccards player-items">
+        @foreach (var item in Model.Items)
+        {
+            <section class="grid-item mycard" id="item_@item.ItemID">
+                <img src="~/Content/assets/ItemPanel.svg" class="panel-svg-small" />
+                <div class="carddata grid-container">
+                    @Html.EditorFor(model => item.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis", disabled = "disabled" } })
+                    @Html.EditorFor(model => item.Mechanics, new { htmlAttributes = new { @class = " grid-item cardtext cardMechanics startdis", disabled = "disabled" } })
+                    @Html.TextAreaFor(model => item.Summary, new { @class = "grid-item cardtext cardSummary stardis", disabled = "disabled" })
+                </div>
+            </section>
+        }
+    </section>
+    <section class="grid-container pccards player-spells">
+        @foreach (var spell in Model.Spells)
+        {
+            <section class="grid-item mycard" id="spell_@spell.SpellID">
+                <img src="~/Content/assets/SpellPanel.svg" class="panel-svg-small" />
+                <div class="carddata grid-container">
+                    @Html.EditorFor(model => spell.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
+                    @Html.EditorFor(model => spell.CastTime, new { htmlAttributes = new { @class = " grid-item cardtext cardDetail2 startdis" } })
+                    @Html.EditorFor(model => spell.Duration, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2 startdis" } })
+                    @Html.TextAreaFor(model => spell.RangeArea, new { @class = "grid-item cardtext cardDetail3 cardtextarea startdis" })
+                    @Html.TextAreaFor(model => spell.Summary, new { @class = "grid-item cardtext SpellCardSummary stardis" })
+                </div>
+            </section>
+        }
+    </section>
 
 </div>

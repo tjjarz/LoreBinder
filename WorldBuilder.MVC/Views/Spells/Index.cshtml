@@ -18,15 +18,13 @@
     @for( var i = 0; i < Model.Count(); i++)
     {
         <section class="grid-item mycard">
-
             <img src="~/Content/assets/SpellPanel.svg" class="panel-svg-small" />
-
             <div class="carddata grid-container">
                 @Html.EditorFor(model => model[i].Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
                 @Html.EditorFor(model => model[i].CastTime, new { htmlAttributes = new { @class = " grid-item cardtext cardDetail2 startdis" } })
                 @Html.EditorFor(model => model[i].Duration, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2 startdis" } })
                 @Html.TextAreaFor(model => model[i].RangeArea, new { @class = "grid-item cardtext cardDetail3 cardtextarea startdis" })
-                @Html.TextAreaFor(model => model[i].Summary, new { @class = "grid-item cardtext cardSummary stardis" })
+                @Html.TextAreaFor(model => model[i].Summary, new { @class = "grid-item cardtext SpellCardSummary stardis" })
             </div>
         </section>
     }

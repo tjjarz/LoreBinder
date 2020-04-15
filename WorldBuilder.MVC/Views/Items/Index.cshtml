@@ -21,7 +21,7 @@
 
             <div class="carddata grid-container">
                 @Html.EditorFor(model => model.ElementAt(i).Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
-                @Html.EditorFor(model => model.ElementAt(i).Mechanics, new { htmlAttributes = new { @class = " grid-item cardtext cardDetail2 startdis" } })
+                @Html.TextAreaFor(model => model.ElementAt(i).Mechanics, new { @class = " grid-item cardtext cardtextarea startdis" } )
                 @Html.TextAreaFor(model => model.ElementAt(i).Summary, new { @class = "grid-item cardtext cardSummary stardis" })
             </div>
         </section>
