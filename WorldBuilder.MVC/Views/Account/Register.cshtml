@@ -9,10 +9,10 @@
 <hr />
 
 <h3>Greetings</h3>
-<h4>This is a recored announcement, as we are all out at the moment.</h4>
-<h4>The commercial council of magrathea thanks you for your esteamed visit but regrets that the entire planet is temporarily closed.</h4>
+<h4><b>This is a recorded announcement, as we are all out at the moment.</b></h4>
+<h4><b><i>The commercial council of magrathea thanks you for your esteamed visit but regrets that the entire planet is temporarily closed.</i></b></h4>
 
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
         <h4>Create a new account.</h4>
@@ -41,7 +41,7 @@
                 <input type="submit" class="btn btn-default" value="Register" />
             </div>
         </div>
-    }
+    }*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

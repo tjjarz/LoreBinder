@@ -11,24 +11,35 @@
 
 </head>
 <body style="background-color: #7d7d7d">
-    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("World Builder", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav mr-auto">
-                    @*<button><a href="/World">World</a></button>*@
-                    <li>@Html.ActionLink("World", "Index", "World")</li>
-                    <li>@Html.ActionLink("Character Builder", "Index", "Player")</li>
-                    <li>@Html.ActionLink("Items", "Index", "Items")</li>
-                    <li>@Html.ActionLink("Features", "Index", "Features")</li>
-                    <li>@Html.ActionLink("Spells", "Index", "Spells")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </nav>
+    <div id="sidebar">
+        <div style="font-size:30px;cursor:pointer" onclick="openNav()" class="navbutton" id="menunavbutton">&#9776;</div>
+    </div>
+    <div id="mySidenav" class="sidenav" data-state="closed">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <li>@Html.ActionLink("World", "Index", "World")</li>
+        <li>@Html.ActionLink("Character", "Index", "Player")</li>
+        <li>@Html.ActionLink("Items", "Index", "Items")</li>
+        <li>@Html.ActionLink("Features", "Index", "Features")</li>
+        <li>@Html.ActionLink("Spells", "Index", "Spells")</li>
+    </div>
+
+
+    
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "280px";
+            document.getElementById("mySidenav").toggleAttribute("data-state");
+            document.getElementById("menunavbutton").setAttribute("onclick", "closeNav()");
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("menunavbutton").setAttribute("onclick", "openNav()");
+
+        }
+    </script>
+
 
 
     <div class="container body-content" style="background-color: #c4c4c4">
@@ -58,12 +69,30 @@
 
     */
 
-
+    .navbutton {
+        right: 0;
+        width: 60px;
+        text-align:center;
+        color: white;
+        
+    }
 
     nav {
-        background-color: #7e5096;
-        box-shadow: 0px 0px 6px 2px #505050;
+        background-color: #6b4b87;
+        /*box-shadow: 0px 0px 6px 2px #505050;*/
         margin-bottom: -10px;
+    }
+
+    #sidebar {
+        height: 100%;
+        width: 60px;
+        position: fixed;
+        z-index: 5;
+        top: 0;
+        right: 0;
+        background-color: #6b4b87;
+        overflow-x: hidden;
+        transition: 0.5s;
     }
 
     .navbar-nav > li {
@@ -72,6 +101,40 @@
         padding-right: 15px;
         text-decoration: none;
     }
+
+    .sidenav {
+        height: 100%;
+        width: 0px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: #513866;
+        overflow-x: hidden;
+        transition: 0.5s;
+        /*padding-top: 60px;*/
+    }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
 
     a {
         color: #FFFFFF;
@@ -309,6 +372,12 @@
 
 
     /*beginning of the new paradigm*/
+
+    .pcbuttonpanel {
+        margin-top: 30px;
+    }
+
+
     .mycard {
         /*width: 265px !important;*/
         height: 326px;
@@ -662,7 +731,6 @@
         margin-top: 0px;
         height: 26px;
         font-size: 16px;
-
     }
 
     .spellsummary {

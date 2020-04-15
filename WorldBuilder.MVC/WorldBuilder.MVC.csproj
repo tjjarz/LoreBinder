@@ -194,6 +194,23 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\1x\PersonalityPanel.png" />
+    <Content Include="Content\assets\1x\PersonalityPanel_1.png" />
+    <Content Include="Content\assets\1x\SkillParts.png" />
+    <Content Include="Content\assets\1x\StatsParts.png" />
+    <Content Include="Content\assets\FeaturePanel.svg" />
+    <Content Include="Content\assets\FeaturePanelLong.svg" />
+    <Content Include="Content\assets\ItemPanel.svg" />
+    <Content Include="Content\assets\ItemPanelLong.svg" />
+    <Content Include="Content\assets\Panel.svg" />
+    <Content Include="Content\assets\PersonalityPanel.svg" />
+    <Content Include="Content\assets\SkillsPanel.svg" />
+    <Content Include="Content\assets\SpellPanel.svg" />
+    <Content Include="Content\assets\SpellPanelBig.svg" />
+    <Content Include="Content\assets\StatsPanel.svg" />
+    <Content Include="Content\assets\SVG\PersonalityPanel_1.svg" />
+    <Content Include="Content\assets\SVG\SkillParts.svg" />
+    <Content Include="Content\assets\SVG\StatsParts.svg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
