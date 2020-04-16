@@ -1,10 +1,12 @@
 ﻿@model List<WorldBuilder.Data.Item>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Items";
 }
 
-<h2>Index</h2>
+<h2>Items</h2>
+<p>Says it right there on the tin, if it's an object and you could use it for something, it goes here.</p>
+<hr />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,17 +15,26 @@
 
 
 
-    @for (var i = 0; i < Model.Count(); i++)
+    
+    @foreach (var item in Model)
+
     {
         <section class="grid-item mycard">
 
             <img src="~/Content/assets/ItemPanel.svg" class="panel-svg-small" />
 
             <div class="carddata grid-container">
-                @Html.EditorFor(model => model.ElementAt(i).Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
-                @Html.TextAreaFor(model => model.ElementAt(i).Mechanics, new { @class = " grid-item cardtext cardtextarea startdis" } )
-                @Html.TextAreaFor(model => model.ElementAt(i).Summary, new { @class = "grid-item cardtext cardSummary stardis" })
+                @Html.EditorFor(model => item.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
+                @Html.TextAreaFor(model => item.Mechanics, new { @class = " grid-item cardtext cardtextarea startdis" })
+                @Html.TextAreaFor(model => item.Summary, new { @class = "grid-item cardtext cardSummary stardis" })
+
+                <div class="grid-item pcbuttonpanel">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ItemID, @class = "grid-item leftbutton" })
+                    @Html.ActionLink("Details", "Details", new { id = item.ItemID, @class = "grid-item leftbutton" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ItemID, @class = "grid-item leftbutton" })
+                </div>
             </div>
+
         </section>
     }
 </div>

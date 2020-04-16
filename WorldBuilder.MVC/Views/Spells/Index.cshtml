@@ -14,19 +14,28 @@
 <br />
 <div class="grid-container cardcollection">
 
-    
-    @for( var i = 0; i < Model.Count(); i++)
-    {
-        <section class="grid-item mycard">
-            <img src="~/Content/assets/SpellPanel.svg" class="panel-svg-small" />
-            <div class="carddata grid-container">
-                @Html.EditorFor(model => model[i].Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
-                @Html.EditorFor(model => model[i].CastTime, new { htmlAttributes = new { @class = " grid-item cardtext cardDetail2 startdis" } })
-                @Html.EditorFor(model => model[i].Duration, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2 startdis" } })
-                @Html.TextAreaFor(model => model[i].RangeArea, new { @class = "grid-item cardtext cardDetail3 cardtextarea startdis" })
-                @Html.TextAreaFor(model => model[i].Summary, new { @class = "grid-item cardtext SpellCardSummary stardis" })
-            </div>
-        </section>
-    }
+
+        @foreach (var item in Model)
+
+        {
+            <section class="grid-item mycard">
+                <img src="~/Content/assets/SpellPanel.svg" class="panel-svg-small" />
+                <div class="carddata grid-container">
+                    @Html.EditorFor(model => item.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
+                    @Html.EditorFor(model => item.CastTime, new { htmlAttributes = new { @class = " grid-item cardtext cardDetail2 startdis" } })
+                    @Html.EditorFor(model => item.Duration, new { htmlAttributes = new { @class = "grid-item cardtext cardDetail2 startdis" } })
+                    @Html.TextAreaFor(model => item.RangeArea, new { @class = "grid-item cardtext cardDetail3 cardtextarea startdis" })
+                    @Html.TextAreaFor(model => item.Summary, new { @class = "grid-item cardtext SpellCardSummary stardis" })
+
+                    <div class="grid-item pcbuttonpanel">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SpellID, @class = "grid-item leftbutton" })
+                        @Html.ActionLink("Details", "Details", new { id = item.SpellID, @class = "grid-item leftbutton" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SpellID, @class = "grid-item leftbutton" })
+                    </div>
+                </div>
+
+
+            </section>
+        }
 </div>
 

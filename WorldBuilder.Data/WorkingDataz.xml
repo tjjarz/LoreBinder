@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Character>
-  <Name>Phil</Name>
-  <Occupation>Janitor</Occupation>
-  <caster>Yes</caster>
-</Character>
+<Characters>
+  <Character>
+    <Name>phil</Name>
+  </Character>
+</Characters>

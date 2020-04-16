@@ -24,6 +24,13 @@
         @Html.ActionLink("Items", "Index", "Items")
         @Html.ActionLink("Features", "Index", "Features")
         @Html.ActionLink("Spells", "Index", "Spells")
+        <br />
+        <hr />
+        @Html.ActionLink("Bind Items", "Index", "BindItems")
+        @Html.ActionLink("Bind Features", "Index", "BindFeatures")
+        @Html.ActionLink("Bind Spells", "Index", "BindSpells")
+        <br />
+        @Html.Partial("_LoginPartial")
     </div>
 
 
@@ -91,6 +98,10 @@
 
     */
 
+    .table {
+        color: #ffffff;
+    }
+
     h1, h2, h3, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
         font-family: 'Cinzel Decorative', cursive;
     }
@@ -126,7 +137,7 @@
         width: 60px;
         text-align: center;
         color: white;
-        position:absolute;
+        position:fixed;
         z-index:900;
 
     }
@@ -471,7 +482,11 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, 265px);
         grid-gap: 10px;
-        grid-auto-rows: minmax(330px, auto);
+        grid-auto-rows: minmax(405px, auto);
+    }
+
+    .pccardcollection {
+        grid-auto-rows: minmax(680px, auto);
     }
 
     .pccards {
@@ -825,4 +840,19 @@
         resize: none;
         font-size: 18px;
     }
+
+
+    .nav > li > a:focus, .nav > li > a:hover {
+        text-decoration: none;
+        background-color: none;
+    }
+
+    a:hover {
+        border: none;
+        background: none;
+        padding: 5px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
 </style>

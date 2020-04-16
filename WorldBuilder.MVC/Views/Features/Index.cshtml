@@ -1,10 +1,12 @@
 ﻿@model List<WorldBuilder.Data.Feature>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Features";
 }
 
-<h2>Index</h2>
+<h2>Features</h2>
+<p>Encompasses Class Features, Species Features, and Feats.</p>
+<hr />
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,18 +15,28 @@
 
 
 
-    @for (var i = 0; i < Model.Count(); i++)
+    @*@for (var i = 0; i < Model.Count(); i++)
+    *@
+        @foreach (var item in Model)
     {
-        <section class="grid-item mycard">
+    <section class="grid-item mycard">
 
-            <img src="~/Content/assets/FeaturePanel.svg" class="panel-svg-small" />
+        <img src="~/Content/assets/FeaturePanel.svg" class="panel-svg-small" />
 
-            <div class="carddata grid-container">
-                @Html.EditorFor(model => model.ElementAt(i).Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
-                @Html.EditorFor(model => model.ElementAt(i).Mechanics, new { htmlAttributes = new { @class = " grid-item cardtext cardtextarea startdis" } })
-                @Html.TextAreaFor(model => model.ElementAt(i).Summary, new { @class = "grid-item cardtext cardSummary stardis" })
+        <div class="carddata grid-container">
+            @Html.EditorFor(model => item.Name, new { htmlAttributes = new { @class = "grid-item cardtext cardName startdis" } })
+            @Html.EditorFor(model => item.Mechanics, new { htmlAttributes = new { @class = " grid-item cardtext cardtextarea startdis" } })
+            @Html.TextAreaFor(model => item.Summary, new { @class = "grid-item cardtext cardSummary stardis" })
+
+            <div class="grid-item pcbuttonpanel">
+                @Html.ActionLink("Edit", "Edit", new { id = item.FeatureID, @class = "grid-item leftbutton" })
+                @Html.ActionLink("Details", "Details", new { id = item.FeatureID, @class = "grid-item leftbutton" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.FeatureID, @class = "grid-item leftbutton" })
             </div>
-        </section>
+
+        </div>
+
+    </section>
     }
 </div>
 
