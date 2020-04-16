@@ -22,10 +22,10 @@
             {
                 <section class="@xelement.Name">
                     <h2>@xelement.Name</h2>
-
+                    <hr />
                     @foreach (var child in xelement.Elements())
                     {
-                        <div class="@child.Name" style="border: 3px solid grey">
+                        <div class="@child.Name">
 
                             @if (child.Elements().Count() > 1)
                             {
@@ -38,7 +38,7 @@
                                         {<div class="Name"><h3>@gchild.Value</h3></div> }
 
                                     else
-                                    { <div style="background-color: #FFFFF0"><p>@gchild.Value</p></div> }
+                                    { <div><p>@gchild.Value</p></div> }
                             }
 
                             else
@@ -46,11 +46,11 @@
                                 <div><p>@gchild.Name:</p></div>
 
 
-                                <div style="background-color: #FFFFF0">
+                                <div>
                                     @foreach (var kid in gchild.Elements())
                                     {
                                         if (kid.Elements().Count() < 2)
-                                        {<p>@kid.Value</p> }
+                                        {<p>     @kid.Value</p> }
 
                                     else
                                     { <p>@kid.Descendants().First().Value - @kid.Descendants().Last().Value</p>}
@@ -68,3 +68,10 @@
         }
     }
 </div>
+
+
+<style>
+    .xlstuff {
+
+    }
+</style>

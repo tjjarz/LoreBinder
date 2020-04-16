@@ -24,9 +24,9 @@
 }
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Manipulate the very Fabric of Space and Time";
 }
-<h1>@Model[0]</h1>
+<h1>The Beginning...</h1>
 <script type="text/javascript">
     $(function () {
         var formCount = 0;
@@ -120,17 +120,17 @@
                     <div class="col-md-12">
                     </div>  <!-- /div.col-md-12 -->
                     <button class="btn btn-danger" data-role="remove">
-                        <span class="glyphicon glyphicon-remove"></span>
+                        <span class="glyphicon glyphicon-remove">-</span>
                     </button>
                     <button class="btn btn-primary" data-role="add">
-                        <span class="glyphicon glyphicon-plus"></span>
+                        <span class="glyphicon glyphicon-plus">+</span>
                     </button>
                 </div>
             </div>  <!-- /div.form-inline -->
         </div>  <!-- /div[data-role="dynamic-fields"] -->
         <div class="form-group">
             <!--<button class="btn btn-primary" data-role="draftsave">Save</button>-->
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" class="btn btn-default" disabled="disabled"/>
         </div>
         <div class="col-md-12">
         </div>  <!-- /div.col-md-12 -->
@@ -156,6 +156,33 @@
     .btn {
         background-color: #6f64ff;
         padding: 1px 6px;
+    }
+
+
+    .btn-danger {
+        font-size:26px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .btn-primary {
+        font-size: 26px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .glyphicon-plus{
+        position:absolute;
+        margin-top: -45px;
+        margin-left: -12.5px;
+        font-size: 62px;
+    }
+
+    .glyphicon-minus {
+        position: absolute;
+        margin-top: -45px;
+        margin-left: -12.5px;
+        font-size: 62px;
     }
 
     #field-name {

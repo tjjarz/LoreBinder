@@ -8,25 +8,30 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Expletus+Sans:ital,wght@0,400;0,600;1,600&family=Merriweather&family=Nova+Cut&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
 </head>
-<body style="background-color: #7d7d7d">
+<body>
     <div id="sidebar">
-        <div style="font-size:30px;cursor:pointer" onclick="openNav()" class="navbutton" id="menunavbutton">&#9776;</div>
+        @*<div style="font-size:30px;cursor:pointer" onclick="openNav()" class="navbutton" id="menunavbutton">&#9776;</div>*@
+        <div style="cursor:pointer" onclick="openNav()" class="glyph navbutton" id="menunavbutton">
+            <img src="~/Content/assets/SVG/Glyph.svg" class="glyph" />
+        </div>
+
     </div>
     <div id="mySidenav" class="sidenav" data-state="closed">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <li>@Html.ActionLink("World", "Index", "World")</li>
-        <li>@Html.ActionLink("Character", "Index", "Player")</li>
-        <li>@Html.ActionLink("Items", "Index", "Items")</li>
-        <li>@Html.ActionLink("Features", "Index", "Features")</li>
-        <li>@Html.ActionLink("Spells", "Index", "Spells")</li>
+        @Html.ActionLink("Character", "Index", "Player")
+        @Html.ActionLink("Items", "Index", "Items")
+        @Html.ActionLink("Features", "Index", "Features")
+        @Html.ActionLink("Spells", "Index", "Spells")
     </div>
 
 
-    
+
 
     <script>
+        
+
         function openNav() {
             document.getElementById("mySidenav").style.width = "280px";
             document.getElementById("mySidenav").toggleAttribute("data-state");
@@ -42,11 +47,27 @@
 
 
 
-    <div class="container body-content" style="background-color: #c4c4c4">
+    <div class="container body-content">
+        <br />
         <br />
         <br />
         @RenderBody()
-        <hr />
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <footer>
             <p>&copy; @DateTime.Now.Year - World Builder by Tom Jarzyniecki III</p>
         </footer>
@@ -66,15 +87,48 @@
     font-family: 'Nova Cut', cursive;
     font-family: 'Merriweather', serif;
     font-family: 'Cinzel Decorative', cursive;
+    font-family: 'Raleway', sans-serif;
 
     */
+
+    h1, h2, h3, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-family: 'Cinzel Decorative', cursive;
+    }
+
+    body {
+        background: #3b3b4b;
+    }
+
+    .body-content {
+        font-family: 'Raleway', sans-serif;
+        font-size: 18px;
+        text-align:justify;
+        width: 70%;
+        /*background-color: #8b8b8b;*/
+    }
+
+
+    .glyph {
+        margin-right: 10px;
+        fill: #e8e8e8;
+        padding-top: 10px;
+        z-index: 10;
+        width: 60px;
+
+    }
+
+    /*.glyph:hover{
+        fill: #6b4b87;
+    }*/
 
     .navbutton {
         right: 0;
         width: 60px;
-        text-align:center;
+        text-align: center;
         color: white;
-        
+        position:absolute;
+        z-index:900;
+
     }
 
     nav {
@@ -86,17 +140,17 @@
     #sidebar {
         height: 100%;
         width: 60px;
-        position: fixed;
-        z-index: 5;
         top: 0;
         right: 0;
-        background-color: #6b4b87;
+        padding-top: -10px;
+        /*background-color: #6b4b87;*/
+        background-color: none;
         overflow-x: hidden;
         transition: 0.5s;
     }
 
     .navbar-nav > li {
-        padding-top: 0px;
+        padding-top: 15px;
         padding-bottom: 0px;
         padding-right: 15px;
         text-decoration: none;
@@ -106,13 +160,13 @@
         height: 100%;
         width: 0px;
         position: fixed;
-        z-index: 1;
+        z-index: 700;
         top: 0;
         right: 0;
         background-color: #513866;
         overflow-x: hidden;
         transition: 0.5s;
-        /*padding-top: 60px;*/
+        padding-top: 20px;
     }
 
         .sidenav a {
@@ -381,7 +435,7 @@
     .mycard {
         /*width: 265px !important;*/
         height: 326px;
-        box-shadow: 3px 5px 5px 1px #444444;
+        box-shadow: 3px 5px 2px 1px #222222;
         border-radius: 30px 30px 30px 30px;
         /*position: relative;*/
         /*margin: 0;*/

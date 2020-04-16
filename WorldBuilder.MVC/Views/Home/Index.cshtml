@@ -1,8 +1,275 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Welcome...";
 }
 
-<div class="jumbotron">
+
+    <div class="landingpage">
+        <div class="parallax-box">
+            <div class="parallax-obj" data-depth="0.1">
+                <img src="~/Content/assets/SVG/blob.svg" class="bgelement" id="blob" viewBox="0 0 1812.66 2280.48" />
+            </div>
+            <div class="parallax-obj" data-depth="0.2">
+                <img src="~/Content/assets/SVG/bigsmoke1.svg" class="bgelement" id="bigsmoke1" viewBox="0 0 1812.66 2280.48" />
+            </div>
+            <div class="parallax-obj" data-depth="0.3">
+                <img src="~/Content/assets/SVG/bigsmoke2.svg" class="bgelement" id="bigsmoke2" viewBox="0 0 1812.66 2280.48" />
+            </div>
+            <div class="parallax-obj" data-depth="0.4">
+                <img src="~/Content/assets/SVG/smoke1.svg" class="bgelement" id="smoke1" viewBox="0 0 1812.66 2280.48" />
+            </div>
+            <div class="parallax-obj" data-depth="0.4">
+                <img src="~/Content/assets/SVG/smoke2.svg" class="bgelement" id="smoke2" viewBox="0 0 1812.66 2280.48" />
+            </div>
+            <div class="parallax-obj" data-depth="0.5">
+                <img src="~/Content/assets/SVG/smoke3.svg" class="bgelement" id="smoke3" viewBox="0 0 1812.66 2280.48" />
+            </div>
+
+            <div id="wordsarehard">
+                <div class="parallax-obj" data-depth="0.8">
+                    <img src="~/Content/assets/SVG/Welcome.svg" class="svgelement" id="welcome" viewBox="0 0 1812.66 2280.48" />
+                </div>
+                <div class="parallax-obj" data-depth="0.8">
+                    <img src="~/Content/assets/SVG/Stranger.svg" class="svgelement" id="stranger" viewBox="0 0 1812.66 2280.48" />
+                </div>
+                <div class="parallax-obj" data-depth="0.8">
+                    <img src="~/Content/assets/SVG/BeYou.svg" class="svgelement" id="beyou" viewBox="0 0 1812.66 2280.48" />
+                </div>
+                <div class="parallax-obj" data-depth="0.95">
+                    <a href="@Url.Action("", "player/create")"><img src="~/Content/assets/SVG/Adventurer.svg" class="svgelement" id="adventurer" viewBox="0 0 1812.66 2280.48" /></a>
+                </div>
+                <div class="parallax-obj" data-depth="0.8">
+                    <img src="~/Content/assets/SVG/OrA.svg" class="svgelement" id="ora" viewBox="0 0 1812.66 2280.48" />
+                </div>
+                <div class="parallax-obj" data-depth="0.95">
+                    <a href="@Url.Action("", "world/create")"><img src="~/Content/assets/SVG/LoreMaster.svg" class="svgelement" id="loremaster" viewBox="0 0 1812.66 2280.48" /></a>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                document.addEventListener('scroll', handlescroll);
+            });
+
+            var input = {
+                scrollY: {
+                    start: 0,
+                    end: document.documentElement.scrollHeight - window.innerHeight,
+                    current: 0,
+                }
+            };
+
+            var output = {
+                scrollY: {
+                    current: 0,
+                    fraction: 0,
+                    end: 0,
+                },
+                y: {
+                    start: -100,
+                    end: 100,
+                }
+            };
+
+            output.y.range = output.y.end - output.y.start;
+
+            var handleresize = function () {
+                input.scrollY.end = document.documentElement.scrollHeight - window.innerWidth;
+                input.scrollY.range = input.scrollY.end - input.scrollY.start;
+            }
+
+            input.scrollY.range = input.scrollY.end - input.scrollY.start;
+
+            var handlescroll = function () {
+                updateoutput();
+                input.scrollY.current = document.documentElement.scrollTop;
+                input.scrollY.fraction = (input.scrollY.current - input.scrollY.start) / input.scrollY.range;
+                var scrollmax = document.documentElement.scrollHeight - window.innerHeight;
+                console.log("scrolling!!!", input.scrollY.fraction);
+            }
+
+            var updateoutput = function () {
+                output.y.current = output.y.end - (input.scrollY.fraction * output.y.range);
+            }
+
+
+
+
+        </script>
+
+        <div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+
+
+
+<style>
+
+    .container {
+        max-width: 3000px;
+    }
+
+    #bigsmoke1{
+        display:none;
+    }
+    
+    .svgelement{
+        margin-top: 20%;
+        z-index: 200;
+    }
+
+    #wordsarehard{
+        display:block;
+        /*margin-top: 30%;*/
+        margin-left: auto;
+        margin-right:auto;
+        /*margin-left: 50%;*/
+        width: 60%;
+        
+    }
+
+    #stranger {
+        margin-top: 20%;
+    }
+
+    #beyou{
+        margin-top: 20%;
+    }
+
+    #adventurer {
+        color: #6b4b87;
+    }
+
+    #ora {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30%;
+    }
+
+
+    #bigsmoke2 {
+        opacity: .4;
+        margin-top: -50%;
+        height: 400%
+    }
+
+    #sidebar{
+        background-color: none;
+    }
+
+    #blob {
+        margin-left: -120px;
+        margin-top: -40%;
+        opacity: .33;
+        height: 400%
+    }
+
+    #smoke1 {
+        /*opacity: .4;*/
+        margin-top: -20%;
+        height: 200%
+    }
+
+
+    #smoke2 {
+        opacity: .4;
+        margin-top: -20%;
+    }
+    #smoke3 {
+        margin-top: -20%;
+    }
+
+    .bgelement{
+        position:absolute;
+        z-index:-1;
+    }
+
+    .svgelement {
+        position:relative;
+        text-align: center;
+        /*width: 80%;*/
+        /*padding-left: 10%;*/
+        /*padding-right: 10%;*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="jumbotron">
     <h1>World Builder!</h1>
     <p class="lead">World Builder is a totally sweet "web" application that facilitates world building for creatives, with a <i>subtle emphasis</i> on Dungeon Masters who obesses over their hand crafted worlds!</p>
     <p><a href="~/World" class="btn btn-primary btn-lg">View your World! &raquo;</a></p>
@@ -26,4 +293,4 @@
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
-</div>
+</div>*@
